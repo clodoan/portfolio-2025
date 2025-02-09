@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f1ea;
+  --foreground: #2c2c2c;
+  --accent: #ed8008;
+  --accent-muted: #d97507;
+  --text-muted: #666666;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme='dark'] {
+  --background: #1a1a1a;
+  --foreground: #e8e6e3;
+  --accent: #ed8008;
+  --accent-muted: #ff9f2b;
+  --text-muted: #a3a3a3;
 }
 
 body {

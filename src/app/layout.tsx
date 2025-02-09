@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
+import ThemeToggle from "@/components/theme-toggle";
 
 const sansSerif = Inter({
 	variable: "--font-sans-serif",
@@ -27,7 +29,12 @@ export default function RootLayout({
 			<body
 				className={`${sansSerif.variable} ${robotoSerif.variable} antialiased`}
 			>
-				{children}
+				<ThemeProvider attribute="data-theme">
+					<header className="flex justify-end px-6 py-4">
+						<ThemeToggle className="" />
+					</header>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
