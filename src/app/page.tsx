@@ -5,6 +5,12 @@ export default function Home() {
 			<p className="">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
 			</p>
+			<p>
+				Excepteur culpa labore nostrud amet quis non tempor et sit eu veniam.
+				Labore culpa irure fugiat ad occaecat ipsum cillum ipsum sit quis qui id
+				anim veniam occaecat. Aute eiusmod culpa sint cillum dolor. Cillum qui
+				excepteur culpa.
+			</p>
 		</div>
 	);
 }
