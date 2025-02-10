@@ -58,3 +58,13 @@ p {
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.1s ease;
+  
+  &:hover {
+    color: var(--accent-muted);
+  }
+}

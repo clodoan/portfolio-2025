@@ -31,7 +31,9 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
 				viewBox="0 0 24 24"
 				fill="currentColor"
 				strokeWidth="0"
-				aria-label={theme === "dark" ? "Dark mode" : "Light mode"}
+				aria-label={
+					theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+				}
 				role="img"
 				className="w-full h-full"
 			>
@@ -44,7 +46,9 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
 					transform-origin="12 12"
 					style={{
 						transform:
-							theme === "dark" ? "translate(6px, 0)" : "translate(0, 0)",
+							theme === "dark"
+								? "translate(6px, -2px) scale(1.2)"
+								: "translate(0, 0)",
 						transition: "transform 0.3s ease-in-out",
 					}}
 				/>
