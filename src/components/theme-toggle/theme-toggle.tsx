@@ -15,7 +15,7 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
 		setMounted(true);
 	}, []);
 
-	if (!mounted) return null;
+	if (typeof window === "undefined" || !mounted) return null;
 
 	return (
 		<button
@@ -46,9 +46,7 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
 					transform-origin="12 12"
 					style={{
 						transform:
-							theme === "dark"
-								? "translate(6px, -2px) scale(1.2)"
-								: "translate(0, 0)",
+							theme === "dark" ? "translate(6px, -2px) scale(1.2)" : "translate(0, 0)",
 						transition: "transform 0.3s ease-in-out",
 					}}
 				/>

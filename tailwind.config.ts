@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
 	content: [
@@ -13,45 +14,38 @@ export default {
 				foreground: "var(--foreground)",
 				accent: "var(--accent)",
 				"accent-muted": "var(--accent-muted)",
-				"text-muted": "var(--text-muted)",
-				"text-accent": "var(--text-accent)",
-				"text-accent-muted": "var(--text-accent-muted)",
+				muted: "var(--text-muted)",
 			},
 			fontFamily: {
 				sans: ["var(--font-sans-serif)"],
 				serif: ["var(--font-serif)"],
 			},
-			fontSize: {
-				"body-1": [
-					"1rem",
-					{
-						lineHeight: "1.7",
-						fontWeight: "450",
-					},
-				],
-				"body-2": [
-					"0.875rem",
-					{
-						lineHeight: "1.7",
-						fontWeight: "450",
-					},
-				],
-				"label-1": [
-					"1rem",
-					{
-						lineHeight: "1.7",
-						fontWeight: "500",
-					},
-				],
-				"label-2": [
-					"0.875rem",
-					{
-						lineHeight: "1.7",
-						fontWeight: "500",
-					},
-				],
-			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		({ addUtilities }: PluginAPI) => {
+			addUtilities({
+				".body-1": {
+					fontSize: "1rem",
+					lineHeight: "1.7",
+					fontWeight: "450",
+				},
+				".body-2": {
+					fontSize: "0.875rem",
+					lineHeight: "1.7",
+					fontWeight: "450",
+				},
+				".label-1": {
+					fontSize: "1rem",
+					lineHeight: "1.7",
+					fontWeight: "500",
+				},
+				".label-2": {
+					fontSize: "0.875rem",
+					lineHeight: "1.7",
+					fontWeight: "500",
+				},
+			});
+		},
+	],
 } satisfies Config;

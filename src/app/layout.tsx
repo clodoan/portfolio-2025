@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/theme-toggle";
+import { ThemeProvider } from "next-themes";
 
 const sansSerif = Inter({
 	variable: "--font-sans-serif",
@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			<body
 				className={`${sansSerif.variable} ${robotoSerif.variable} antialiased`}
 			>
-				<ThemeProvider attribute="data-theme" defaultTheme="light">
+				<ThemeProvider attribute="class" defaultTheme="light">
 					<ThemeToggle className="absolute size-5 top-6 right-6" />
 					{children}
 				</ThemeProvider>
