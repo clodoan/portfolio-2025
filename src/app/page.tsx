@@ -9,8 +9,8 @@ const content = {
 
 const Home = () => {
 	return (
-		<div className="flex flex-col max-w-[800px] mx-auto justify-center h-screen">
-			<h1 className="">{content.title}</h1>
+		<div className="flex flex-col max-w-[600px] mx-auto justify-center h-screen motion-opacity-in-0 motion-blur-in-md motion-duration-1500">
+			<h1 className="text-heading-1">{content.title}</h1>
 			<p className="text-body-1 text-muted">{content.subtitle}</p>
 			<p className="text-body-1 text-muted">{parse(content.description)}</p>
 		</div>

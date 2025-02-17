@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import type { PluginAPI } from "tailwindcss/types/config";
+import tailwindcssMotion from "tailwindcss-motion";
 
 export default {
 	content: [
@@ -17,33 +18,56 @@ export default {
 				muted: "var(--text-muted)",
 			},
 			fontFamily: {
-				sans: ["var(--font-sans-serif)"],
+				sans: ["var(--font-sans-serif)", "system-ui", "sans-serif"],
 				serif: ["var(--font-serif)"],
 			},
 		},
 	},
 	plugins: [
+		tailwindcssMotion,
 		({ addUtilities }: PluginAPI) => {
 			addUtilities({
-				".body-1": {
-					fontSize: "1rem",
-					lineHeight: "1.7",
+				".text-body-1": {
+					fontFamily: "var(--font-sans-serif)",
+					fontSize: "0.9375rem",
+					lineHeight: "1.8",
 					fontWeight: "450",
+					marginBottom: "0.5rem",
 				},
-				".body-2": {
+				".text-body-2": {
+					fontFamily: "var(--font-sans-serif)",
 					fontSize: "0.875rem",
 					lineHeight: "1.7",
 					fontWeight: "450",
+					marginBottom: "0.5rem",
 				},
-				".label-1": {
-					fontSize: "1rem",
-					lineHeight: "1.7",
-					fontWeight: "500",
-				},
-				".label-2": {
+				".text-label-1": {
+					fontFamily: "var(--font-sans-serif)",
 					fontSize: "0.875rem",
 					lineHeight: "1.7",
 					fontWeight: "500",
+					marginBottom: "0.5rem",
+				},
+				".text-label-2": {
+					fontFamily: "var(--font-sans-serif)",
+					fontSize: "0.75rem",
+					lineHeight: "1.7",
+					fontWeight: "500",
+					marginBottom: "0.5rem",
+				},
+				".text-heading-1": {
+					fontFamily: "var(--font-serif)",
+					fontSize: "1.25rem",
+					lineHeight: "1.5",
+					fontWeight: "500",
+					marginBottom: "0.5rem",
+				},
+				".text-heading-2": {
+					fontFamily: "var(--font-serif)",
+					fontSize: "0.875rem",
+					lineHeight: "1.3",
+					fontWeight: "500",
+					marginBottom: "0.5rem",
 				},
 			});
 		},
