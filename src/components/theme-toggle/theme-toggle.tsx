@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import * as RadixToggle from "@radix-ui/react-toggle";
 
 interface ThemeToggleProps {
   className?: string;
@@ -17,11 +18,15 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
 
   if (typeof window === "undefined" || !mounted) return null;
 
+  const handlePressedChange = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
-    <button
+    <RadixToggle.Root
       type="button"
       className={`transition-opacity hover:opacity-75 ${className}`}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onPressedChange={handlePressedChange}
       aria-label="Toggle theme"
     >
       <svg
@@ -53,6 +58,6 @@ export default function ThemeToggle({ className = "" }: ThemeToggleProps) {
           }}
         />
       </svg>
-    </button>
+    </RadixToggle.Root>
   );
 }
