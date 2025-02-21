@@ -23,10 +23,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
-        className={`${sansSerif.variable} ${robotoSerif.variable} antialiased`}
+        className={`${sansSerif.variable} ${robotoSerif.variable} antialiased min-h-screen isolate`}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <ThemeToggle className="absolute size-5 top-6 right-6" />
+          <ThemeToggle className="absolute top-5 right-5" />
           {children}
         </ThemeProvider>
       </body>

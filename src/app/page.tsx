@@ -11,7 +11,7 @@ const content = {
 
 const Home = () => {
   return (
-    <div className="flex flex-col md:max-w-[600px] max-w-[90%] mx-auto justify-center h-screen motion-opacity-in-0 motion-blur-in-md motion-duration-1500">
+    <div className="flex flex-col md:max-w-[600px] max-w-[90%] mx-auto justify-center h-screen motion-opacity-in-0 motion-blur-in-md motion-duration-1500 z-0">
       <h1 className="text-heading-1">{content.title}</h1>
       <p className="text-body-1 text-muted">{content.subtitle}</p>
       <p className="text-body-1 text-muted">{parse(content.description)}</p>
