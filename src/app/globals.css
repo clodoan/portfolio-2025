@@ -4,6 +4,7 @@
 
 :root {
 	--background: #f4f1ea;
+	--background-translucid: #f4f1ea70;
 	--foreground: #2c2c2c;
 	--accent: #ed8008;
 	--accent-muted: #d97507;
@@ -12,6 +13,7 @@
 
 .dark {
 	--background: #1a1a1a;
+	--background-translucid: #1a1a1a70;
 	--foreground: #e8e6e3;
 	--accent: #ed8008;
 	--accent-muted: #ff9f2b;

@@ -1,10 +1,7 @@
-"use client";
-
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import ThemeToggle from "@/components/theme-toggle";
-import { ThemeProvider } from "next-themes";
-import Head from "next/head";
+import ThemeWrapper from "@/components/theme-wrapper";
+import { metadata } from "./metadata";
 
 const sansSerif = Inter({
   variable: "--font-sans-serif",
@@ -16,19 +13,15 @@ const robotoSerif = Source_Serif_4({
   subsets: ["latin"],
 });
 
+export { metadata };
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <body
         className={`${sansSerif.variable} ${robotoSerif.variable} antialiased min-h-screen isolate`}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <ThemeToggle className="absolute top-5 right-5" />
-          {children}
-        </ThemeProvider>
+        <ThemeWrapper>{children}</ThemeWrapper>
       </body>
     </html>
   );

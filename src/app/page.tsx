@@ -1,4 +1,7 @@
+"use client";
+
 import parse from "html-react-parser";
+import { useTheme } from "next-themes";
 
 const content = {
   title: "Claudio Angrigiani.",
@@ -18,12 +21,24 @@ const content = {
 };
 
 const Home = () => {
+  const theme = useTheme();
   return (
-    <div className="flex flex-col md:max-w-[600px] max-w-[90%] mx-auto justify-center h-screen motion-opacity-in-0 motion-blur-in-md motion-duration-1500 z-0">
-      <h1 className="text-heading-1">{content.title}</h1>
-      <p className="text-body-1 text-muted">{content.subtitle}</p>
-      <p className="text-body-1 text-muted">{parse(content.description)}</p>
-      <p className="text-body-1 text-muted">{parse(content.before)}</p>
+    <div
+      className="w-screen h-screen"
+      style={{
+        backgroundImage: `url('/home/${theme.theme}.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="flex flex-col md:max-w-[600px] max-w-[90%] mx-auto justify-center h-screen p-5 rounded overflow-hidden motion-opacity-in-0 motion-blur-in-md motion-duration-1500 z-0">
+        <div className="bg-backgroundTranslucid backdrop-blur-[2px] rounded-xl py-9 px-12 border-y border-solid border-x-transparent border-t-white/10 border-b-black/20">
+          <h1 className="text-heading-1">{content.title}</h1>
+          <p className="text-body-1 text-muted">{content.subtitle}</p>
+          <p className="text-body-1 text-muted">{parse(content.description)}</p>
+          <p className="text-body-1 text-muted">{parse(content.before)}</p>
+        </div>
+      </div>
     </div>
   );
 };
