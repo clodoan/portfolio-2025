@@ -31,7 +31,7 @@ const content = {
 
 const Home = () => {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen min-h-[100dvh]">
       <div className="flex flex-col gap-3 md:max-w-[600px] max-w-[90%] mx-auto justify-center h-screen p-5 rounded overflow-hidden motion-opacity-in-0 motion-blur-in-md motion-duration-1500 z-0">
         <div className="flex justify-between">
           <h1 className="text-label-1">{content.title}</h1>
