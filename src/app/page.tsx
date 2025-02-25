@@ -21,6 +21,12 @@ const content = {
       "<a href='https://www.bancogalicia.com.ar' target='_blank' rel='noopener noreferrer'>Banco Galicia</a>, " +
       "one of the largest banks in Argentina.",
   },
+  contact: {
+    findMe:
+      "Find me on " +
+      "<a href='https://x.com/clodoan' target='_blank' rel='noopener noreferrer'>X</a> " +
+      "and <a href='https://github.com/clodoan' target='_blank' rel='noopener noreferrer'>GitHub</a>",
+  },
 };
 
 const Home = () => {
@@ -46,6 +52,9 @@ const Home = () => {
           <p className="text-body-1 text-secondary">
             {parse(content.before.content)}
           </p>
+        </div>
+        <div className="inline-flex gap-2 text-body-1 text-secondary">
+          {parse(content.contact.findMe)}
         </div>
       </div>
     </div>
