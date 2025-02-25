@@ -27,7 +27,7 @@ const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
     <RadixToggle.Root
       type="button"
       className={cx(
-        "transition-opacity hover:opacity-75 z-50 touch-manipulation size-5",
+        "transition-opacity hover:opacity-75 z-50 touch-manipulation size-5 text-secondary",
         className
       )}
       onPressedChange={handlePressedChange}
@@ -53,11 +53,11 @@ const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
           cy="12"
           r="8"
           fill="var(--background)"
-          transform-origin="12 12"
+          className="transform-origin-[12px_12px]"
           style={{
             transform:
               theme === "dark"
-                ? "translate(6px, -2px) scale(1.2)"
+                ? "translate(4px, -4px) scale(1.2)"
                 : "translate(0, 0)",
             transition: "transform 0.3s ease-in-out",
           }}

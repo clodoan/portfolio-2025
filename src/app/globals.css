@@ -4,20 +4,20 @@
 
 :root {
 	--background: #f4f1ea;
-	--background-translucid: #f4f1ea70;
-	--foreground: #2c2c2c;
+	--text-primary: #2c2c2c;
+	--text-secondary: #666666;
+	--text-tertiary: #808080;
 	--accent: #ed8008;
 	--accent-muted: #d97507;
-	--text-muted: #666666;
 }
 
 .dark {
 	--background: #1a1a1a;
-	--background-translucid: #1a1a1a70;
-	--foreground: #e8e6e3;
+	--text-primary: #e8e6e3;
+	--text-secondary: #a3a3a3;
+	--text-tertiary: #8c8c8c;
 	--accent: #ed8008;
 	--accent-muted: #ff9f2b;
-	--text-muted: #a3a3a3;
 }
 
 a {
