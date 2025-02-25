@@ -27,7 +27,7 @@ const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
     <RadixToggle.Root
       type="button"
       className={cx(
-        "transition-opacity hover:opacity-75 z-50 touch-manipulation size-5 text-secondary",
+        "transition-opacity hover:opacity-75 z-50 touch-manipulation size-5 rounded-full overflow-hidden",
         className
       )}
       onPressedChange={handlePressedChange}
@@ -47,20 +47,31 @@ const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
         role="img"
         className="w-full h-full"
       >
-        <circle cx="12" cy="12" r="12" fill="currentColor" />
+        <defs>
+          <mask id="moon-mask">
+            <circle cx="12" cy="12" r="12" fill="white" />
+            <circle
+              cx="12"
+              cy="12"
+              r="8"
+              fill="black"
+              className="transform-origin-[12px_12px]"
+              style={{
+                transform:
+                  theme === "dark"
+                    ? "translate(4px, -4px) scale(1.2)"
+                    : "translate(0, 0)",
+                transition: "transform 0.2s ease-in-out",
+              }}
+            />
+          </mask>
+        </defs>
         <circle
           cx="12"
           cy="12"
-          r="8"
-          fill="var(--background)"
-          className="transform-origin-[12px_12px]"
-          style={{
-            transform:
-              theme === "dark"
-                ? "translate(4px, -4px) scale(1.2)"
-                : "translate(0, 0)",
-            transition: "transform 0.3s ease-in-out",
-          }}
+          r="12"
+          fill="var(--text-primary)"
+          mask="url(#moon-mask)"
         />
       </svg>
     </RadixToggle.Root>

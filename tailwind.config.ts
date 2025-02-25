@@ -20,6 +20,11 @@ export default {
         secondary: "var(--background-secondary)",
         tertiary: "var(--background-tertiary)",
       },
+      borderColor: {
+        primary: "var(--border-primary)",
+        secondary: "var(--border-secondary)",
+        tertiary: "var(--border-tertiary)",
+      },
       fontFamily: {
         sans: ["var(--font-sans-serif)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)"],
@@ -76,21 +81,21 @@ export default {
           fontFamily: "var(--font-serif)",
           fontSize: "1rem",
           lineHeight: "1.8",
-          fontWeight: "500",
+          fontWeight: "400",
           marginBottom: "0.5rem",
         },
         ".text-heading-2": {
           fontFamily: "var(--font-serif)",
           fontSize: "0.875rem",
           lineHeight: "1.8",
-          fontWeight: "500",
+          fontWeight: "400",
           marginBottom: "0.5rem",
         },
         ".text-heading-3": {
           fontFamily: "var(--font-serif)",
           fontSize: "0.75rem",
           lineHeight: "1.8",
-          fontWeight: "500",
+          fontWeight: "400",
           marginBottom: "0.5rem",
         },
       });
