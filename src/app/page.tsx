@@ -6,20 +6,19 @@ const content = {
   today: {
     title: "Today",
     content:
-      "I'm the first Design Engineer at " +
-      "<a href='https://onefootprint.com' target='_blank' rel='noopener noreferrer'>Footprint</a>. " +
-      "I work across design and frontend teams, tinkering with both Figma and production-ready code.",
+      "Design Engineer at " +
+      "<a href='https://onefootprint.com' target='_blank' rel='noopener noreferrer'>Footprint</a>, " +
+      "working across design and frontend teams with both Figma and production code.",
   },
   before: {
     title: "Before",
     content:
-      "I founded a couple of startups, " +
+      "Founded " +
       "<a href='https://www.f6s.com/company/comecasero.com' target='_blank' rel='noopener noreferrer'>ComeCasero</a> " +
-      "and <a href='https://www.hidorothy.com' target='_blank' rel='noopener noreferrer'>Dorothy</a>, " +
-      "and was part of early <a href='https://www.mainstreet.com' target='_blank' rel='noopener noreferrer'>Mainstreet</a>'s " +
-      "design team. I was also the Design Manager of the first Design team at " +
-      "<a href='https://www.bancogalicia.com.ar' target='_blank' rel='noopener noreferrer'>Banco Galicia</a>, " +
-      "one of the largest banks in Argentina.",
+      "and <a href='https://www.hidorothy.com' target='_blank' rel='noopener noreferrer'>Dorothy</a>. " +
+      "Early designer at <a href='https://www.mainstreet.com' target='_blank' rel='noopener noreferrer'>Mainstreet</a> " +
+      "and Design Manager at " +
+      "<a href='https://www.bancogalicia.com.ar' target='_blank' rel='noopener noreferrer'>Banco Galicia</a>.",
   },
   contact: {
     findMe:
@@ -54,7 +53,7 @@ const Home = () => {
           </p>
         </div>
         <div className="flex flex-col gap-1 border-t border-dashed border-primary my-2 h-[1px]" />
-        <div className="inline-flex gap-2 text-body-1 text-secondary">
+        <div className="inline-flex gap-1 text-body-1 text-secondary">
           {parse(content.contact.findMe)}
         </div>
       </div>
