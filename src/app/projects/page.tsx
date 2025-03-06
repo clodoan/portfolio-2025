@@ -3,8 +3,8 @@ import path from "node:path";
 import Image from "next/image";
 import type { FC } from "react";
 import Link from "next/link";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
-// Define types for our media files
 type MediaType = "image" | "video";
 type MediaFile = {
   path: string;
@@ -91,24 +91,10 @@ export default async function ProjectsPage() {
       <div className="max-w-3xl mx-auto relative">
         <Link
           href="/"
-          className="absolute -left-12 top-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+          className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-secondary/80 group"
           aria-label="Back to home"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <title>Back arrow</title>
-            <path d="m15 18-6-6 6-6" />
-          </svg>
+          <ArrowLeftIcon className="w-4 h-4 text-primary group-hover:text-secondary" />
         </Link>
         <div className="flex flex-col">
           {mediaFiles.map((file) => (
