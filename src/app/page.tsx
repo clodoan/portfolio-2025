@@ -9,7 +9,7 @@ const content = {
       "Design Engineer at " +
       "<a href='https://onefootprint.com' target='_blank' rel='noopener noreferrer'>Footprint</a>, " +
       "working across design and frontend teams with both Figma and production code. " +
-      "If you're curious, check out a dump of some of the <a href='/projects'>work I've done at Footprint</a>.",
+      "If you're curious, check out a dump of some of the <a href='/projects'>work I've done here</a>.",
   },
   before: {
     title: "Before",
