@@ -8,7 +8,8 @@ const content = {
     content:
       "Design Engineer at " +
       "<a href='https://onefootprint.com' target='_blank' rel='noopener noreferrer'>Footprint</a>, " +
-      "working across design and frontend teams with both Figma and production code.",
+      "working across design and frontend teams with both Figma and production code. " +
+      "See a dump of some of my Footprint <a href='/projects'>work</a>.",
   },
   before: {
     title: "Before",
