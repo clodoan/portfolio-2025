@@ -12,6 +12,7 @@
     "optimize-media": "node scripts/optimize-media.mjs"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.6",
@@ -19,6 +20,7 @@
     "@types/mdx": "^2.0.13",
     "@vercel/og": "^0.6.5",
     "class-variance-authority": "^0.7.1",
+    "graceful-fs": "^4.2.11",
     "html-react-parser": "^5.2.2",
     "motion": "^12.4.2",
     "next": "15.1.6",
@@ -36,11 +38,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "ffmpeg-static": "^5.2.0",
-    "imagemin": "^9.0.0",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
-    "imagemin-webp": "^8.0.0",
     "postcss": "^8",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
