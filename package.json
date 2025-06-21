@@ -20,6 +20,7 @@
     "@types/mdx": "^2.0.13",
     "@vercel/og": "^0.6.5",
     "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
     "graceful-fs": "^4.2.11",
     "html-react-parser": "^5.2.2",
     "motion": "^12.4.2",

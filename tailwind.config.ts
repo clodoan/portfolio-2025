@@ -98,6 +98,43 @@ export default {
           fontWeight: "400",
           marginBottom: "0.5rem",
         },
+
+        ".text-rivet-label-1": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "1rem",
+          lineHeight: "1.25",
+          fontWeight: "550",
+        },
+        ".text-rivet-label-2": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "0.875rem",
+          lineHeight: "1.25",
+          fontWeight: "550",
+        },
+        ".text-rivet-label-3": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "0.75rem",
+          lineHeight: "1.25",
+          fontWeight: "550",
+        },
+        ".text-rivet-body-1": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "1rem",
+          lineHeight: "1.25",
+          fontWeight: "400",
+        },
+        ".text-rivet-body-2": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "0.875rem",
+          lineHeight: "1.25",
+          fontWeight: "400",
+        },
+        ".text-rivet-body-3": {
+          fontFamily: "var(--font-sans-serif)",
+          fontSize: "0.75rem",
+          lineHeight: "1.25",
+          fontWeight: "400",
+        },
       });
     },
   ],

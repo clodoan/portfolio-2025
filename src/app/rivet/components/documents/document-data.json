@@ -1,0 +1,306 @@
+[
+  {
+    "key": "w2-floqast",
+    "group": "W-2",
+    "company": "Floqast",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-15T00:00:00.000Z",
+    "dueDate": "2025-06-22T00:00:00.000Z"
+  },
+  {
+    "key": "w2-roblox",
+    "group": "W-2",
+    "company": "Roblox",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "w2-google",
+    "group": "W-2",
+    "company": "Google",
+    "status": "pending",
+    "lastUpdatedDate": "2025-01-10T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "w2-microsoft",
+    "group": "W-2",
+    "company": "Microsoft",
+    "status": "optional",
+    "lastUpdatedDate": "2025-01-05T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-schwab",
+    "group": "1099",
+    "company": "Schwab",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-18T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-robinhood",
+    "group": "1099",
+    "company": "Robinhood",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-td-ameritrade",
+    "group": "1099",
+    "company": "TD Ameritrade",
+    "status": "pending",
+    "lastUpdatedDate": "2025-01-12T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-fidelity",
+    "group": "1099",
+    "company": "Fidelity",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-20T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-int-bank-of-america",
+    "group": "1099-INT",
+    "company": "Bank of America",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-16T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-int-sofi",
+    "group": "1099-INT",
+    "company": "SoFi",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-int-chase",
+    "group": "1099-INT",
+    "company": "Chase",
+    "status": "pending",
+    "lastUpdatedDate": "2025-01-14T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-int-robinhood",
+    "group": "1099-INT",
+    "company": "Robinhood",
+    "status": "optional",
+    "lastUpdatedDate": "2025-01-08T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "1099-int-wells-fargo",
+    "group": "1099-INT",
+    "company": "Wells Fargo",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-22T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "k1-shrug-capital-fund-i-lp",
+    "group": "K-1",
+    "company": "Shrug Capital Fund I LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-10T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-shrug-capital-fund-ii-lp",
+    "group": "K-1",
+    "company": "Shrug Capital Fund II LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-atlas-peak-capital-partners-lp",
+    "group": "K-1",
+    "company": "Atlas Peak Capital Partners LP",
+    "status": "pending",
+    "lastUpdatedDate": "2025-03-05T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-helix-digital-assets-offshore-fund-lp",
+    "group": "K-1",
+    "company": "Helix Digital Assets Offshore Fund LP",
+    "status": "optional",
+    "lastUpdatedDate": "2025-03-01T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-horizon-bridge-growth-fund-ii-lp",
+    "group": "K-1",
+    "company": "Horizon Bridge Growth Fund II LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-12T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-monarch-crest-value-fund-i-lp",
+    "group": "K-1",
+    "company": "Monarch Crest Value Fund I LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-granite-west-real-estate-fund-iii-lp",
+    "group": "K-1",
+    "company": "Granite West Real Estate Fund III LP",
+    "status": "pending",
+    "lastUpdatedDate": "2025-03-08T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-voyager-quantitative-strategies-lp",
+    "group": "K-1",
+    "company": "Voyager Quantitative Strategies LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-15T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-blue-current-climate-tech-fund-lp",
+    "group": "K-1",
+    "company": "Blue Current Climate Tech Fund LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-apollo-creek-healthcare-fund-lp",
+    "group": "K-1",
+    "company": "Apollo Creek Healthcare Fund LP",
+    "status": "optional",
+    "lastUpdatedDate": "2025-03-03T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-black-sail-secondary-opportunities-lp",
+    "group": "K-1",
+    "company": "Black Sail Secondary Opportunities LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-14T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-northpoint-frontier-fund-lp",
+    "group": "K-1",
+    "company": "NorthPoint Frontier Fund LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-tamarack-ai-ventures-fund-i-lp",
+    "group": "K-1",
+    "company": "Tamarack AI Ventures Fund I LP",
+    "status": "pending",
+    "lastUpdatedDate": "2025-03-07T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-fox-hollow-structured-credit-fund-lp",
+    "group": "K-1",
+    "company": "Fox Hollow Structured Credit Fund LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-11T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-crescent-harbor-multi-strategy-fund-lp",
+    "group": "K-1",
+    "company": "Crescent Harbor Multi-Strategy Fund LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-terranova-blockchain-fund-lp",
+    "group": "K-1",
+    "company": "TerraNova Blockchain Fund LP",
+    "status": "optional",
+    "lastUpdatedDate": "2025-03-02T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-iron-lantern-small-cap-opportunities-lp",
+    "group": "K-1",
+    "company": "Iron Lantern Small Cap Opportunities LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-13T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-beacon-trail-seed-fund-lp",
+    "group": "K-1",
+    "company": "Beacon Trail Seed Fund LP",
+    "status": "pending",
+    "lastUpdatedDate": "2025-03-06T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-echo-range-consumer-growth-lp",
+    "group": "K-1",
+    "company": "Echo Range Consumer Growth LP",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "k1-arcadia-ventures-opportunity-fund-lp",
+    "group": "K-1",
+    "company": "Arcadia Ventures Opportunity Fund LP",
+    "status": "completed",
+    "lastUpdatedDate": "2025-03-09T00:00:00.000Z",
+    "dueDate": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "key": "other-rental-income",
+    "group": "Other",
+    "company": "Airbnb",
+    "status": "completed",
+    "lastUpdatedDate": "2025-01-25T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "other-freelance-income",
+    "group": "Other",
+    "company": "Upwork",
+    "status": "required",
+    "lastUpdatedDate": "2025-06-20T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "other-consulting-fees",
+    "group": "Other",
+    "company": "Independent Consulting",
+    "status": "pending",
+    "lastUpdatedDate": "2025-01-30T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "other-royalty-income",
+    "group": "Other",
+    "company": "Book Royalties",
+    "status": "optional",
+    "lastUpdatedDate": "2025-01-28T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  },
+  {
+    "key": "other-gambling-winnings",
+    "group": "Other",
+    "company": "Casino Winnings",
+    "status": "completed",
+    "lastUpdatedDate": "2025-02-01T00:00:00.000Z",
+    "dueDate": "2026-01-31T00:00:00.000Z"
+  }
+]
