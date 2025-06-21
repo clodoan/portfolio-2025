@@ -21,6 +21,7 @@
     "@vercel/og": "^0.6.5",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.18.1",
     "graceful-fs": "^4.2.11",
     "html-react-parser": "^5.2.2",
     "motion": "^12.4.2",
@@ -44,7 +45,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.12.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",
