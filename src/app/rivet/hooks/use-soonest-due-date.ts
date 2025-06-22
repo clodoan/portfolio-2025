@@ -1,4 +1,4 @@
-import type { DocumentProps } from "../../../documents.types";
+import type { DocumentProps } from "../document.types";
 
 const useSoonestDueDate = (documents: DocumentProps[]) => {
   const soonestDueDate =
@@ -8,7 +8,7 @@ const useSoonestDueDate = (documents: DocumentProps[]) => {
             ? current
             : soonest
         ).dueDate
-      : null;
+      : undefined;
 
   return { soonestDueDate };
 };

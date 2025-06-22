@@ -1,4 +1,4 @@
-import type { DocumentProps } from "../../../../../documents.types";
+import type { DocumentProps } from "../../../../../../../document.types";
 
 const useCompletedDocumentsCount = (documents: DocumentProps[]) => {
   const completedDocumentsCount = documents.filter(

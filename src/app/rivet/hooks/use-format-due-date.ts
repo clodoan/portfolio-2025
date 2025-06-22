@@ -5,8 +5,7 @@ import {
   differenceInDays,
   format,
 } from "date-fns";
-
-const DAYS_FORMAT_THRESHOLD = 7;
+import { DAYS_FORMAT_THRESHOLD } from "../documents.constants";
 
 const useFormatDueDate = () => {
   const formatDueDate = (dateString: string) => {
@@ -31,7 +30,7 @@ const useFormatDueDate = () => {
 
     // If it's exactly 7 days from today, format as "Due June 21"
     if (daysDiff === DAYS_FORMAT_THRESHOLD) {
-      return `Due ${format(dueDate, "MMM d")}`;
+      return `Due ${format(dueDate, "MMM d, yyyy")}`;
     }
 
     // If it's less than 7 days from today (but not today, tomorrow, or yesterday)
@@ -41,17 +40,22 @@ const useFormatDueDate = () => {
 
     // If it's more than 7 days from today
     if (daysDiff > DAYS_FORMAT_THRESHOLD) {
-      return `Due ${format(dueDate, "MMM d")}`;
+      return `Due ${format(dueDate, "MMM d, yyyy")}`;
     }
 
     // If it's before yesterday (negative daysDiff)
-    if (daysDiff < 0) {
+    if (daysDiff < -1) {
       const absDaysDiff = Math.abs(daysDiff);
       return `Due ${absDaysDiff} days ago`;
     }
 
+    // If it's before yesterday (negative daysDiff)
+    if (daysDiff === -1) {
+      return "Due yesterday";
+    }
+
     // Fallback
-    return `Due ${format(dueDate, "MMM d")}`;
+    return `Due ${format(dueDate, "MMM d, yyyy")}`;
   };
 
   return { formatDueDate };
