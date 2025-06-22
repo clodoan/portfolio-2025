@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
-import type { PluginAPI } from "tailwindcss/types/config";
 import tailwindcssMotion from "tailwindcss-motion";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
   content: [

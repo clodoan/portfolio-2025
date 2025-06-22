@@ -1,8 +1,8 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import ThemeToggle from "../theme-toggle";
 import { useEffect, useState } from "react";
+import ThemeToggle from "../theme-toggle";
 
 export default function ThemeWrapper({
   children,

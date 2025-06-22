@@ -1,12 +1,12 @@
+import { execSync } from "node:child_process";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import sharp from "sharp";
 import ffmpeg from "ffmpeg-static";
-import { execSync } from "node:child_process";
 import imagemin from "imagemin";
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminPngquant from "imagemin-pngquant";
 import imageminWebp from "imagemin-webp";
+import sharp from "sharp";
 
 // Configuration
 const config = {
@@ -123,7 +123,7 @@ async function optimizeImage(filePath, outputPath) {
       // For other image formats, use sharp directly
       // Create a temporary file path for GIF files to avoid the "Cannot use same file for input and output" error
       const tempOutputPath = `${outputPath}.temp${path.extname(outputPath)}`;
-      
+
       let image = sharp(filePath);
 
       if (config.image.maxWidth || config.image.maxHeight) {
@@ -137,7 +137,7 @@ async function optimizeImage(filePath, outputPath) {
 
       // Write to the temporary file first
       await image.toFile(tempOutputPath);
-      
+
       // Replace the original file with the temporary file
       await fs.rename(tempOutputPath, outputPath);
     }

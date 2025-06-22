@@ -1,9 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import * as RadixToggle from "@radix-ui/react-toggle";
 import { cx } from "class-variance-authority";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 interface ThemeToggleProps {
   className?: string;

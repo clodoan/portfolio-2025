@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import documentData from "../document-data.json";
-import type { DocumentProps, DocumentGroup } from "../document.types";
+import type { DocumentGroup, DocumentProps } from "../document.types";
 
 const useGroupedDocuments = () => {
   const groupedDocuments = useMemo(() => {

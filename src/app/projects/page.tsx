@@ -1,9 +1,9 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import Image from "next/image";
-import type { FC } from "react";
-import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
 
 type MediaType = "image" | "video";
 type MediaFile = {

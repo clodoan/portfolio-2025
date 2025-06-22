@@ -1,5 +1,5 @@
-import DocumentCard from "./components/document-card/document-card";
 import useGroupedDocuments from "../../hooks/use-grouped-documents";
+import DocumentCard from "./components/document-card/document-card";
 
 const DocumentList = () => {
   const { documentEntries } = useGroupedDocuments();
