@@ -1,12 +1,12 @@
-import type { DocumentStatus } from "../../../../../../../../document.types";
 import {
+  CheckCircleOutlined,
   ClockCircleOutlined,
   InfoCircleOutlined,
-  CheckCircleOutlined,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { capitalize } from "lodash";
+import type { DocumentStatus } from "../../../../../../../../document.types";
 
 // map status with icon
 const statusIconMap = {

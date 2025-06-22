@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ThemeWrapper from "@/components/theme-wrapper";
 import { metadata } from "./metadata";

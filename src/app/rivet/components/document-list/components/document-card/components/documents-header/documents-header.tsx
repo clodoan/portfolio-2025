@@ -1,8 +1,8 @@
+import { CalendarIcon } from "@heroicons/react/16/solid";
 import { cva, cx } from "class-variance-authority";
 import type { DocumentProps } from "../../../../../../document.types";
-import { CalendarIcon } from "@heroicons/react/16/solid";
-import Counter from "./components/counter";
 import useFormatDueDate from "../../../../../../hooks/use-format-due-date";
+import Counter from "./components/counter";
 
 type DocumentsHeaderProps = {
   title: string;

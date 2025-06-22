@@ -1,7 +1,7 @@
 import { cx } from "class-variance-authority";
 import type { DocumentProps } from "../../../../../../../../document.types";
-import useCompletedDocumentsCount from "./hooks/use-completed-documents-count";
 import ProgressRing from "./components";
+import useCompletedDocumentsCount from "./hooks/use-completed-documents-count";
 
 type CounterProps = {
   documents: DocumentProps[];

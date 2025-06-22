@@ -1,17 +1,17 @@
 "use client";
 
+import { cva } from "class-variance-authority";
+import { AnimatePresence, motion } from "framer-motion";
+import { uniqueId } from "lodash";
+import { useState } from "react";
 import type { DocumentGroup, DocumentProps } from "../../../../document.types";
 import {
-  useSoonestDueDate,
   useHasUrgentDocuments,
+  useSoonestDueDate,
   useSortedDocuments,
 } from "../../../../hooks";
 import DocumentRow from "./components/document-row";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { uniqueId } from "lodash";
 import DocumentsHeader from "./components/documents-header";
-import { cva } from "class-variance-authority";
 import UrgentDocumentsAlert from "./components/urgent-alert";
 
 type DocumentCardProps = {

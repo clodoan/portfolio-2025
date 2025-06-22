@@ -1,11 +1,11 @@
+import { differenceInDays } from "date-fns";
 import type { DocumentStatus } from "../../../../../../document.types";
 import StatusBadge from "./components/status-badge";
-import { differenceInDays } from "date-fns";
 
-import { DAYS_FORMAT_THRESHOLD } from "../../../../../../documents.constants";
-import DueDate from "./components/due-date";
-import Actions from "./components/actions";
 import { cx } from "class-variance-authority";
+import { DAYS_FORMAT_THRESHOLD } from "../../../../../../documents.constants";
+import Actions from "./components/actions";
+import DueDate from "./components/due-date";
 
 type DocumentRowProps = {
   company: string;

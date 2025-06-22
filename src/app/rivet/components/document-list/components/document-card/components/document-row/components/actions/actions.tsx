@@ -1,11 +1,11 @@
 import {
   ArrowDownTrayIcon,
   ArrowUpTrayIcon,
-  ForwardIcon,
   EyeIcon,
+  ForwardIcon,
 } from "@heroicons/react/24/outline";
-import type { DocumentStatus } from "../../../../../../../../document.types";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import type { DocumentStatus } from "../../../../../../../../document.types";
 
 type ActionsProps = {
   status: DocumentStatus;
