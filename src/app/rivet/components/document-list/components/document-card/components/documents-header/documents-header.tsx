@@ -33,7 +33,7 @@ const containerStyleVariants = cva(
         normal: "bg-transparent",
       },
       isOpen: {
-        true: "bg-transparent shadow-none",
+        true: "bg-neutral-100 shadow-none",
       },
     },
     defaultVariants: {

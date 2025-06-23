@@ -20,7 +20,7 @@ type DocumentCardProps = {
 };
 
 const documentCardVariants = cva(
-  "flex flex-col w-full border rounded-lg text-text-rivet-primary box-content cursor-pointer transition-colors duration-200 overflow-hidden",
+  "flex flex-col w-full border bg-neutral-100 rounded-lg text-text-rivet-primary box-content cursor-pointer transition-colors duration-200 overflow-hidden",
   {
     variants: {
       urgency: {
