@@ -23,7 +23,7 @@ const Counter = ({ documents, hasUrgentDocuments }: CounterProps) => {
     : {
         container: "bg-neutral-50 border-neutral-300",
         text: "text-gray-500",
-        ring: "text-emerald-500",
+        ring: "text-emerald-600",
         muted: "text-gray-300",
       };
 

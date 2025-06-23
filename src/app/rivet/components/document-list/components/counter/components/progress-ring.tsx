@@ -32,7 +32,7 @@ const ProgressRing = ({ progress, className }: ProgressRingProps) => {
         stroke="currentColor"
         strokeWidth={4}
         fill="none"
-        opacity="0.5"
+        opacity="0.2"
         className="transition-opacity duration-200"
       />
       <circle
