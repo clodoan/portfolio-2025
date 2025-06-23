@@ -23,6 +23,7 @@ const DocumentList = () => {
           hasUrgentDocuments={false}
         />
       </div>
+      <span className="border-b border-neutral-400 border-dashed h-[1px] mb-3" />
       <ul className="flex flex-col gap-1">
         {documentEntries.map(([group, documents]) => (
           <DocumentCard key={group} title={group} documents={documents} />
