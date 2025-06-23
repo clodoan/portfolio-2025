@@ -4,7 +4,7 @@
     "group": "W-2",
     "company": "Floqast",
     "status": "required",
-    "lastUpdatedDate": "2025-05-22T00:00:00.000Z",
+    "lastUpdatedDate": "2025-06-23T00:00:00.000Z",
     "dueDate": "2025-06-20T00:00:00.000Z"
   },
   {
@@ -19,7 +19,7 @@
     "key": "w2-google",
     "group": "W-2",
     "company": "Google",
-    "status": "pending",
+    "status": "completed",
     "lastUpdatedDate": "2025-07-26T00:00:00.000Z",
     "dueDate": "2025-08-05T00:00:00.000Z"
   },

@@ -35,7 +35,7 @@ const IconButton = ({ icon, onClick, tooltipText }: IconButtonProps) => {
           <button
             type="button"
             onClick={handleClick}
-            className="p-1 w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100"
+            className="p-1 w-6 h-6 flex items-center justify-center rounded hover:bg-neutral-100"
           >
             {icon}
           </button>

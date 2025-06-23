@@ -1,9 +1,13 @@
 import type { DocumentProps } from "../document.types";
 
 const useSoonestDueDate = (documents: DocumentProps[]) => {
+  const nonCompletedDocuments = documents.filter(
+    (doc) => doc.status !== "completed"
+  );
+
   const soonestDueDate =
-    documents.length > 0
-      ? documents.reduce((soonest, current) =>
+    nonCompletedDocuments.length > 0
+      ? nonCompletedDocuments.reduce((soonest, current) =>
           new Date(current.dueDate) < new Date(soonest.dueDate)
             ? current
             : soonest

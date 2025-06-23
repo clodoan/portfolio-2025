@@ -20,7 +20,7 @@ const statusIconMap = {
     <CheckCircleOutlined className="text-emerald-700 bg-emerald-50 rounded-full" />
   ),
   pending: (
-    <ClockCircleOutlined className="text-gray-600 bg-gray-50 rounded-full" />
+    <ClockCircleOutlined className="text-neutral-600 bg-neutral-50 rounded-full" />
   ),
   overdue: (
     <InfoCircleOutlined className="text-red-700 bg-red-50 rounded-full" />

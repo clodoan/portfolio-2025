@@ -88,7 +88,7 @@ const DocumentCard = ({ title, documents }: DocumentCardProps) => {
             exit={{ opacity: 0, height: 0 }}
             className="p-3 pt-0"
           >
-            <ul className="flex flex-col gap-3 bg-white rounded-lg p-2 w-full overflow-hidden border border-gray-300">
+            <ul className="flex flex-col gap-3 bg-white rounded-lg p-2 w-full overflow-hidden border border-neutral-300">
               {sortedDocuments.map(({ company, status, dueDate }) => (
                 <DocumentRow
                   key={uniqueId()}
