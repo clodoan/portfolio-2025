@@ -1,149 +1,67 @@
-"use client";
-
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import OptimizedVideo from "@/components/optimized-video";
-import uniqueId from "lodash/uniqueId";
+import { getAllProjects } from "@/lib/mdx";
 
-type MediaType = "image" | "video";
-type MediaFile = {
-  path: string;
-  type: MediaType;
-  name: string;
-};
-
-const OptimizedImage: React.FC<{ file: MediaFile }> = ({ file }) => {
-  const publicPath = `/footprint/${file.path}`;
+export default async function ProjectsPage() {
+  const projects = await getAllProjects();
 
   return (
-    <div className="w-full mb-8 overflow-hidden rounded-lg">
-      <div className="relative w-full">
-        <Image
-          src={publicPath}
-          alt={`Media file: ${file.name}`}
-          width={0}
-          height={0}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-          className="w-full h-auto"
-          priority={false}
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        />
-      </div>
-    </div>
-  );
-};
-
-const getPosterPath = (file: MediaFile) => {
-  if (file.type === "video") {
-    // Replace .mp4 with -thumbnail.jpg
-    return `/footprint/${file.path.replace(/\.mp4$/, "-thumbnail.jpg")}`;
-  }
-  return undefined;
-};
-
-const LazyVideo: React.FC<{ file: MediaFile; priority?: boolean }> = ({
-  file,
-  priority,
-}) => {
-  const publicPath = `/footprint/${file.path}`;
-  const posterPath = getPosterPath(file);
-
-  return (
-    <div className="w-full mb-8 overflow-hidden rounded-lg border border-primary">
-      <OptimizedVideo
-        src={publicPath}
-        alt={`Video: ${file.name}`}
-        className="w-full"
-        priority={priority}
-        poster={posterPath}
-      />
-    </div>
-  );
-};
-
-// Media item component
-const MediaItem: React.FC<{ file: MediaFile; priority?: boolean }> = ({
-  file,
-  priority,
-}) => {
-  return file.type === "image" ? (
-    <OptimizedImage file={file} />
-  ) : (
-    <LazyVideo file={file} priority={priority} />
-  );
-};
-
-// Projects page component
-export default function ProjectsPage() {
-  const [mediaFiles, setMediaFiles] = useState<MediaFile[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Fetch media files from API route
-    const fetchMediaFiles = async () => {
-      try {
-        const response = await fetch("/api/media-files");
-        if (response.ok) {
-          const files = await response.json();
-          setMediaFiles(files);
-        } else {
-          console.error("Failed to fetch media files");
-        }
-      } catch (error) {
-        console.error("Error fetching media files:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchMediaFiles();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="container mx-auto py-12 px-4">
-        <div className="max-w-3xl mx-auto relative">
-          <Link
-            href="/"
-            className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-tertiary group"
-            aria-label="Back to home"
-          >
-            <ArrowLeftIcon className="w-4 h-4 text-secondary group-hover:text-primary" />
-          </Link>
-          <div className="flex flex-col gap-8">
-            {Array.from({ length: 6 }, () => (
-              <div
-                key={uniqueId()}
-                className="w-full h-64 bg-secondary rounded-lg animate-pulse"
-              />
-            ))}
-          </div>
+    <div className="w-screen min-h-[100dvh]">
+      <div className="flex flex-col gap-8 md:max-w-[var(--desktop-container-max-width)] max-w-[var(--mobile-container-max-width)] mx-auto p-5 py-20">
+        <div className="space-y-4">
+          <h1 className="text-label-1">Projects</h1>
+          <p className="text-body-1 text-secondary">
+            A collection of my work across different platforms and technologies.
+          </p>
         </div>
-      </div>
-    );
-  }
 
-  return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-3xl mx-auto relative">
-        <Link
-          href="/"
-          className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-tertiary group"
-          aria-label="Back to home"
-        >
-          <ArrowLeftIcon className="w-4 h-4 text-secondary group-hover:text-primary" />
-        </Link>
-        <div className="flex flex-col">
-          {mediaFiles.map((file, idx) => (
-            <MediaItem
-              key={`${file.path}-${file.name}`}
-              file={file}
-              priority={idx === 0}
-            />
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="p-6 bg-secondary rounded-lg border border-tertiary hover:border-primary transition-colors"
+            >
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-label-2 font-medium">{project.title}</h3>
+                  <p className="text-body-2 text-secondary mt-2">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-tertiary text-primary rounded-full text-xs">
+                    {project.category}
+                  </span>
+                  {project.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 bg-background text-secondary rounded text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="px-4 py-2 bg-primary text-background rounded hover:bg-primary/90 transition-colors text-sm"
+                  >
+                    View Details
+                  </Link>
+                  {project.external && project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border border-primary text-primary rounded hover:bg-primary hover:text-background transition-colors text-sm"
+                    >
+                      External Link
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

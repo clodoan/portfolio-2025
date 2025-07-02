@@ -1,26 +1,64 @@
-"use client";
-
 import type { MDXComponents } from "mdx/types";
+import Link from "@/components/link";
+import ProjectCard from "@/components/project-card";
+import Divider from "@/components/divider";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Use the default components with any custom components
     ...components,
-    // Override specific components if needed
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mb-4">{children}</h1>
-    ),
+    // Override specific components to match design system
+    h1: ({ children }) => <h1 className="text-label-1">{children}</h1>,
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold mb-3">{children}</h2>
+      <h2 className="text-label-1 text-secondary">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-bold mb-2">{children}</h3>
+      <h3 className="text-label-2 text-secondary">{children}</h3>
     ),
-    p: ({ children }) => <p className="mb-4">{children}</p>,
-    a: ({ href, children }) => (
-      <a href={href} className="text-blue-500 hover:text-blue-700 underline">
+    p: ({ children }) => (
+      <p className="text-body-1 text-secondary">{children}</p>
+    ),
+    a: ({ href, children, ...props }) => (
+      <Link href={href || ""} external={href?.startsWith("http")} {...props}>
         {children}
-      </a>
+      </Link>
+    ),
+    // Custom components for portfolio
+    ProjectCard: ({
+      title,
+      description,
+      link,
+      image,
+      external,
+    }: {
+      title: string;
+      description: string;
+      link: string;
+      image?: string;
+      external?: boolean;
+    }) => (
+      <ProjectCard
+        title={title}
+        description={description}
+        link={link}
+        image={image}
+        external={external}
+      />
+    ),
+    Divider: () => <Divider />,
+    // Project metadata components
+    ProjectMeta: ({ children }: { children: React.ReactNode }) => (
+      <div className="flex flex-wrap gap-1 mt-2">{children}</div>
+    ),
+    Tag: ({ children }: { children: React.ReactNode }) => (
+      <span className="px-2 py-1 bg-tertiary text-primary rounded text-xs">
+        {children}
+      </span>
+    ),
+    Category: ({ children }: { children: React.ReactNode }) => (
+      <span className="px-3 py-1 bg-secondary text-primary rounded-full text-sm">
+        {children}
+      </span>
     ),
   };
 }
