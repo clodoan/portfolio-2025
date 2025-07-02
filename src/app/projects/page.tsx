@@ -14,7 +14,6 @@ type MediaFile = {
   name: string;
 };
 
-// Optimized image component
 const OptimizedImage: React.FC<{ file: MediaFile }> = ({ file }) => {
   const publicPath = `/footprint/${file.path}`;
 
@@ -38,8 +37,10 @@ const OptimizedImage: React.FC<{ file: MediaFile }> = ({ file }) => {
   );
 };
 
-// Lazy loaded video component using the optimized video component
-const LazyVideo: React.FC<{ file: MediaFile }> = ({ file }) => {
+const LazyVideo: React.FC<{ file: MediaFile; priority?: boolean }> = ({
+  file,
+  priority,
+}) => {
   const publicPath = `/footprint/${file.path}`;
 
   return (
@@ -48,17 +49,21 @@ const LazyVideo: React.FC<{ file: MediaFile }> = ({ file }) => {
         src={publicPath}
         alt={`Video: ${file.name}`}
         className="w-full"
+        priority={priority}
       />
     </div>
   );
 };
 
 // Media item component
-const MediaItem: React.FC<{ file: MediaFile }> = ({ file }) => {
+const MediaItem: React.FC<{ file: MediaFile; priority?: boolean }> = ({
+  file,
+  priority,
+}) => {
   return file.type === "image" ? (
     <OptimizedImage file={file} />
   ) : (
-    <LazyVideo file={file} />
+    <LazyVideo file={file} priority={priority} />
   );
 };
 
@@ -94,16 +99,16 @@ export default function ProjectsPage() {
         <div className="max-w-3xl mx-auto relative">
           <Link
             href="/"
-            className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-secondary/80 group"
+            className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-tertiary group"
             aria-label="Back to home"
           >
-            <ArrowLeftIcon className="w-4 h-4 text-primary group-hover:text-secondary" />
+            <ArrowLeftIcon className="w-4 h-4 text-secondary group-hover:text-primary" />
           </Link>
           <div className="flex flex-col gap-8">
             {Array.from({ length: 6 }, () => (
               <div
                 key={uniqueId()}
-                className="w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg animate-pulse"
+                className="w-full h-64 bg-secondary rounded-lg animate-pulse"
               />
             ))}
           </div>
@@ -117,14 +122,18 @@ export default function ProjectsPage() {
       <div className="max-w-3xl mx-auto relative">
         <Link
           href="/"
-          className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-secondary/80 group"
+          className="flex items-center justify-center w-10 h-10 rounded transition-colors bg-secondary mb-3 hover:bg-tertiary group"
           aria-label="Back to home"
         >
-          <ArrowLeftIcon className="w-4 h-4 text-primary group-hover:text-secondary" />
+          <ArrowLeftIcon className="w-4 h-4 text-secondary group-hover:text-primary" />
         </Link>
         <div className="flex flex-col">
-          {mediaFiles.map((file) => (
-            <MediaItem key={`${file.path}-${file.name}`} file={file} />
+          {mediaFiles.map((file, idx) => (
+            <MediaItem
+              key={`${file.path}-${file.name}`}
+              file={file}
+              priority={idx === 0}
+            />
           ))}
         </div>
       </div>

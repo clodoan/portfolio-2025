@@ -6,16 +6,18 @@ interface OptimizedVideoProps {
   src: string;
   className?: string;
   alt?: string;
+  priority?: boolean;
 }
 
 export default function OptimizedVideo({
   src,
   className = "",
   alt = "Video",
+  priority = false,
 }: OptimizedVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(priority);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [error, setError] = useState(false);
@@ -23,6 +25,10 @@ export default function OptimizedVideo({
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
+    if (priority) {
+      setIsVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,13 +41,11 @@ export default function OptimizedVideo({
         threshold: 0.1,
       }
     );
-
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
-
     return () => observer.disconnect();
-  }, []);
+  }, [priority]);
 
   useEffect(() => {
     if (isVisible && isLoaded && videoRef.current) {
@@ -168,7 +172,9 @@ export default function OptimizedVideo({
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Placeholder */}
       {showPlaceholder && (
-        <div className="w-full h-full bg-secondary rounded-lg overflow-hidden relative border-tertiary border" />
+        <div className="w-full h-64 bg-primary rounded-lg overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
+        </div>
       )}
 
       {/* Video */}
