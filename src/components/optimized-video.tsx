@@ -168,7 +168,7 @@ export default function OptimizedVideo({
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Placeholder */}
       {showPlaceholder && (
-        <div className="w-full h-full bg-primary rounded-lg overflow-hidden relative border-tertiary border" />
+        <div className="w-full h-full bg-secondary rounded-lg overflow-hidden relative border-tertiary border" />
       )}
 
       {/* Video */}
