@@ -13,11 +13,13 @@ export default function OptimizedVideo({
   className = "",
   alt = "Video",
 }: OptimizedVideoProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,49 +30,49 @@ export default function OptimizedVideo({
         }
       },
       {
-        rootMargin: "300px", // Start loading 300px before the video comes into view
+        rootMargin: "100px", // Reduced from 300px for faster loading
         threshold: 0.1,
       }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (isVisible && videoRef.current) {
-      // Only load metadata initially to save bandwidth
-      videoRef.current.load();
-    }
-  }, [isVisible]);
-
-  const handleLoadedMetadata = () => {
-    // Video metadata is loaded, but we don't show it yet
-    if (videoRef.current) {
-      // Create a poster from the first frame
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      if (ctx && videoRef.current.videoWidth > 0) {
-        canvas.width = videoRef.current.videoWidth;
-        canvas.height = videoRef.current.videoHeight;
-        ctx.drawImage(videoRef.current, 0, 0);
-
-        // Set the poster
-        videoRef.current.poster = canvas.toDataURL("image/jpeg", 0.8);
-      }
-    }
-  };
 
   const handleCanPlay = () => {
     setIsLoaded(true);
     setShowPlaceholder(false);
   };
 
-  const handleError = () => {
-    console.error(`Failed to load video: ${src}`);
+  const handleError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+    const video = e.currentTarget;
+    const error = video.error;
+    let message = `Failed to load video: ${src}`;
+
+    if (error) {
+      switch (error.code) {
+        case MediaError.MEDIA_ERR_ABORTED:
+          message = "Video loading was aborted";
+          break;
+        case MediaError.MEDIA_ERR_NETWORK:
+          message = "Network error while loading video";
+          break;
+        case MediaError.MEDIA_ERR_DECODE:
+          message = "Video decoding error";
+          break;
+        case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+          message = "Video format not supported";
+          break;
+        default:
+          message = `Video error: ${error.message || "Unknown error"}`;
+      }
+    }
+
+    console.error(message);
+    setErrorMessage(message);
     setError(true);
     setShowPlaceholder(false);
   };
@@ -78,11 +80,40 @@ export default function OptimizedVideo({
   const handleClick = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.play().catch(console.error);
+        videoRef.current.play().catch((err) => {
+          console.error("Failed to play video:", err);
+        });
       } else {
         videoRef.current.pause();
       }
     }
+  };
+
+  const handleRetry = () => {
+    setError(false);
+    setErrorMessage("");
+    setIsLoaded(false);
+    setShowPlaceholder(true);
+    setIsVisible(false);
+
+    // Re-trigger intersection observer
+    setTimeout(() => {
+      if (containerRef.current) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setIsVisible(true);
+              observer.disconnect();
+            }
+          },
+          {
+            rootMargin: "100px",
+            threshold: 0.1,
+          }
+        );
+        observer.observe(containerRef.current);
+      }
+    }, 100);
   };
 
   if (error) {
@@ -91,11 +122,11 @@ export default function OptimizedVideo({
         className={`w-full h-64 bg-secondary flex items-center justify-center rounded-lg ${className}`}
       >
         <div className="text-center">
-          <p className="text-tertiary">Failed to load video</p>
+          <p className="text-tertiary mb-2">{errorMessage}</p>
           <button
             type="button"
-            onClick={() => window.location.reload()}
-            className="mt-2 px-4 py-2 bg-accent text-text-inverted rounded hover:bg-accent-muted"
+            onClick={handleRetry}
+            className="px-4 py-2 bg-accent text-text-inverted rounded hover:bg-accent-muted transition-colors"
           >
             Retry
           </button>
@@ -105,12 +136,14 @@ export default function OptimizedVideo({
   }
 
   return (
-    <div className={`relative ${className}`}>
+    <div ref={containerRef} className={`relative ${className}`}>
       {/* Placeholder */}
       {showPlaceholder && (
         <div className="w-full h-64 bg-primary rounded-lg overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
-          <div className="w-full h-full bg-primary" />
+          <div className="w-full h-full bg-primary flex items-center justify-center">
+            <div className="text-tertiary">Loading video...</div>
+          </div>
         </div>
       )}
 
@@ -125,8 +158,7 @@ export default function OptimizedVideo({
           muted
           playsInline
           loop
-          preload="metadata"
-          onLoadedMetadata={handleLoadedMetadata}
+          preload="auto"
           onCanPlay={handleCanPlay}
           onError={handleError}
           onClick={handleClick}
