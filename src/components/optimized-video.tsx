@@ -168,12 +168,7 @@ export default function OptimizedVideo({
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Placeholder */}
       {showPlaceholder && (
-        <div className="w-full h-64 bg-primary rounded-lg overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
-          <div className="w-full h-full bg-primary flex items-center justify-center">
-            <div className="text-tertiary">Loading video...</div>
-          </div>
-        </div>
+        <div className="w-full h-full bg-primary rounded-lg overflow-hidden relative border-tertiary border" />
       )}
 
       {/* Video */}
