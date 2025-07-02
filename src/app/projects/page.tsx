@@ -18,7 +18,7 @@ const OptimizedImage: React.FC<{ file: MediaFile }> = ({ file }) => {
   const publicPath = `/footprint/${file.path}`;
 
   return (
-    <div className="w-full mb-8 overflow-hidden rounded-lg border border-primary">
+    <div className="w-full mb-8 overflow-hidden rounded-lg">
       <div className="relative w-full">
         <Image
           src={publicPath}

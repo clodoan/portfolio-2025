@@ -154,12 +154,12 @@ export default function OptimizedVideo({
       <div
         className={`w-full h-64 bg-secondary flex items-center justify-center rounded-lg ${className}`}
       >
-        <div className="text-center">
-          <p className="text-tertiary mb-2">{errorMessage}</p>
+        <div className="text-center flex flex-col items-center justify-center">
+          <p className="text-tertiary mb-2 text-label-1">{errorMessage}</p>
           <button
             type="button"
             onClick={handleRetry}
-            className="px-4 py-2 bg-accent text-text-inverted rounded hover:bg-accent-muted transition-colors"
+            className="px-4 py-2 bg-accent text-text-inverted rounded hover:bg-accent-muted transition-colors text-label-1"
           >
             Retry
           </button>
@@ -170,7 +170,6 @@ export default function OptimizedVideo({
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      {/* Placeholder */}
       {showPlaceholder && (
         <div className="w-full h-64 bg-primary rounded-lg overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
