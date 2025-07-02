@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import PlayButton from "./play-button";
 
 interface OptimizedVideoProps {
   src: string;
@@ -47,23 +48,6 @@ export default function OptimizedVideo({
     return () => observer.disconnect();
   }, [priority]);
 
-  useEffect(() => {
-    if (isVisible && isLoaded && videoRef.current) {
-      const playVideo = async () => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        try {
-          await video.play();
-          setIsPlaying(true);
-        } catch (error) {
-          console.warn("Auto-play failed:", error);
-        }
-      };
-      playVideo();
-    }
-  }, [isVisible, isLoaded]);
-
   const handleCanPlay = () => {
     setIsLoaded(true);
     setShowPlaceholder(false);
@@ -97,20 +81,6 @@ export default function OptimizedVideo({
     setErrorMessage(message);
     setError(true);
     setShowPlaceholder(false);
-  };
-
-  const handleClick = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play().catch((err) => {
-          console.error("Failed to play video:", err);
-        });
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
   };
 
   const handlePlay = () => {
@@ -171,8 +141,11 @@ export default function OptimizedVideo({
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       {showPlaceholder && (
-        <div className="w-full h-64 rounded-lg overflow-hidden relative">
+        <div className="w-full h-64 bg-secondary rounded-lg overflow-hidden relative flex items-center justify-center">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
+          <div className="relative z-10 text-tertiary text-label-1">
+            Loading video...
+          </div>
         </div>
       )}
 
@@ -187,12 +160,19 @@ export default function OptimizedVideo({
           muted
           playsInline
           loop
-          preload="auto"
+          preload="metadata"
           onCanPlay={handleCanPlay}
           onError={handleError}
           onPlay={handlePlay}
           onPause={handlePause}
-          onClick={handleClick}
+          onClick={() => {
+            if (videoRef.current?.paused) {
+              videoRef.current.play().catch((err) => {
+                console.error("Failed to play video:", err);
+              });
+              setIsPlaying(true);
+            }
+          }}
           // Performance optimizations
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
@@ -203,44 +183,31 @@ export default function OptimizedVideo({
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
-              handleClick();
+              if (videoRef.current?.paused) {
+                videoRef.current.play().catch((err) => {
+                  console.error("Failed to play video:", err);
+                });
+                setIsPlaying(true);
+              }
             }
           }}
         />
       )}
 
-      {/* Play/Pause button overlay */}
-      {isLoaded && (
+      {/* Always visible play button for iOS */}
+      {isLoaded && !isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="bg-primary bg-opacity-50 rounded-full p-3 opacity-0 hover:opacity-100 transition-opacity duration-200 pointer-events-auto">
-            {isPlaying ? (
-              <svg
-                className="w-8 h-8 text-text-inverted"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-8 h-8 text-text-inverted"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
-          </div>
+          <PlayButton
+            onClick={(e) => {
+              e.stopPropagation();
+              if (videoRef.current?.paused) {
+                videoRef.current.play().catch((err) => {
+                  console.error("Failed to play video:", err);
+                });
+                setIsPlaying(true);
+              }
+            }}
+          />
         </div>
       )}
     </div>
