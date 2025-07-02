@@ -12,7 +12,8 @@
     "format:check": "biome format .",
     "check": "biome check --write .",
     "check:ci": "biome ci .",
-    "optimize-media": "node scripts/optimize-media.mjs"
+    "optimize-media": "node scripts/optimize-media.mjs",
+    "optimize-videos": "node scripts/simple-optimize.mjs"
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
