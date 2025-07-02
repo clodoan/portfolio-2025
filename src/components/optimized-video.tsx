@@ -8,6 +8,7 @@ interface OptimizedVideoProps {
   className?: string;
   alt?: string;
   priority?: boolean;
+  poster?: string;
 }
 
 export default function OptimizedVideo({
@@ -15,6 +16,7 @@ export default function OptimizedVideo({
   className = "",
   alt = "Video",
   priority = false,
+  poster,
 }: OptimizedVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -48,9 +50,34 @@ export default function OptimizedVideo({
     return () => observer.disconnect();
   }, [priority]);
 
+  // Fallback timeout for Safari mobile
+  useEffect(() => {
+    if (isVisible && !isLoaded) {
+      const timeout = setTimeout(() => {
+        setIsLoaded(true);
+        setShowPlaceholder(false);
+      }, 3000); // 3 second fallback
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isVisible, isLoaded]);
+
   const handleCanPlay = () => {
     setIsLoaded(true);
     setShowPlaceholder(false);
+  };
+
+  const handleLoadedData = () => {
+    if (!isLoaded) {
+      setIsLoaded(true);
+      setShowPlaceholder(false);
+    }
+  };
+
+  const handleLoadStart = () => {
+    if (isVisible) {
+      setShowPlaceholder(false);
+    }
   };
 
   const handleError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
@@ -161,7 +188,10 @@ export default function OptimizedVideo({
           playsInline
           loop
           preload="metadata"
+          poster={poster}
           onCanPlay={handleCanPlay}
+          onLoadedData={handleLoadedData}
+          onLoadStart={handleLoadStart}
           onError={handleError}
           onPlay={handlePlay}
           onPause={handlePause}

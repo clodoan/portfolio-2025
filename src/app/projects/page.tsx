@@ -37,11 +37,20 @@ const OptimizedImage: React.FC<{ file: MediaFile }> = ({ file }) => {
   );
 };
 
+const getPosterPath = (file: MediaFile) => {
+  if (file.type === "video") {
+    // Replace .mp4 with -thumbnail.jpg
+    return `/footprint/${file.path.replace(/\.mp4$/, "-thumbnail.jpg")}`;
+  }
+  return undefined;
+};
+
 const LazyVideo: React.FC<{ file: MediaFile; priority?: boolean }> = ({
   file,
   priority,
 }) => {
   const publicPath = `/footprint/${file.path}`;
+  const posterPath = getPosterPath(file);
 
   return (
     <div className="w-full mb-8 overflow-hidden rounded-lg border border-primary">
@@ -50,6 +59,7 @@ const LazyVideo: React.FC<{ file: MediaFile; priority?: boolean }> = ({
         alt={`Video: ${file.name}`}
         className="w-full"
         priority={priority}
+        poster={posterPath}
       />
     </div>
   );

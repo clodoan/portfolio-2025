@@ -27,6 +27,7 @@
     "@vercel/og": "^0.6.5",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
+    "ffmpeg": "^0.0.4",
     "framer-motion": "^12.18.1",
     "graceful-fs": "^4.2.11",
     "html-react-parser": "^5.2.2",
@@ -55,6 +56,10 @@
   },
   "packageManager": "pnpm@10.12.1",
   "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "ffmpeg-static", "sharp"]
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "ffmpeg-static",
+      "sharp"
+    ]
   }
 }
