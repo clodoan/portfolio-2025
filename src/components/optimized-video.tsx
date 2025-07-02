@@ -171,7 +171,7 @@ export default function OptimizedVideo({
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       {showPlaceholder && (
-        <div className="w-full h-64 bg-primary rounded-lg overflow-hidden relative">
+        <div className="w-full h-64 rounded-lg overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-shimmer" />
         </div>
       )}
