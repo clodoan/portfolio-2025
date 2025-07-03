@@ -21,6 +21,8 @@ export default {
         primary: "var(--background-primary)",
         secondary: "var(--background-secondary)",
         tertiary: "var(--background-tertiary)",
+        quaternary: "var(--background-quaternary)",
+        overlay: "var(--background-overlay)",
       },
       borderColor: {
         primary: "var(--border-primary)",

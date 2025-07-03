@@ -10,6 +10,8 @@
   --background-primary: color(display-p3 0.985 0.982 0.978);
   --background-secondary: color(display-p3 0.914 0.902 0.875);
   --background-tertiary: color(display-p3 0.867 0.851 0.824);
+  --background-quaternary: color(display-p3 0.985 0.982 0.978);
+  --background-overlay: color(display-p3 0.985 0.982 0.978 / 0.5);
   --text-primary: color(display-p3 0.173 0.173 0.173);
   --text-secondary: color(display-p3 0.4 0.4 0.4);
   --text-tertiary: color(display-p3 0.502 0.502 0.502);
@@ -26,6 +28,8 @@
   --background-primary: color(display-p3 0.102 0.102 0.102);
   --background-secondary: color(display-p3 0.141 0.141 0.141);
   --background-tertiary: color(display-p3 0.18 0.18 0.18);
+  --background-quaternary: color(display-p3 0.22 0.22 0.22);
+  --background-overlay: color(display-p3 0.22 0.22 0.22 / 0.5);
   --text-primary: color(display-p3 0.91 0.902 0.89);
   --text-secondary: color(display-p3 0.639 0.639 0.639);
   --text-tertiary: color(display-p3 0.549 0.549 0.549);

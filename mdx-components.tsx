@@ -1,8 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 
-import ProjectCard, { type ProjectCardProps } from "@/components/project-card";
+import ProjectCard, { type ProjectCardProps } from "@/components/projects-section/components/project-card";
 import Divider from "@/components/divider";
 import CustomLink from "@/components/custom-link";
+import ProjectsSection from "@/components/projects-section";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -46,6 +47,7 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     Divider: () => <Divider />,
+    ProjectsSection: () => <ProjectsSection />,
     ProjectMeta: ({ children }: { children: React.ReactNode }) => (
       <div className="flex flex-wrap gap-1 mt-2">{children}</div>
     ),
