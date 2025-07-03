@@ -7,9 +7,9 @@ import { getMDXComponents } from "../../../../mdx-components";
 import type { ProjectFrontmatter } from "@/lib/mdx";
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const projectPath = path.join(
     process.cwd(),
     "src/content/projects",
