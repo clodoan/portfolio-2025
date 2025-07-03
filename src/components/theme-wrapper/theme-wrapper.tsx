@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { useEffect, useState } from "react";
-import ThemeToggle from "../theme-toggle";
+import ThemeToggle from "./components/theme-toggle";
 
 export default function ThemeWrapper({
   children,

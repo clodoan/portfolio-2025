@@ -1,26 +1,68 @@
-"use client";
-
 import type { MDXComponents } from "mdx/types";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+import ProjectCard, { type ProjectCardProps } from "@/components/projects-section/components/project-card";
+import Divider from "@/components/divider";
+import CustomLink from "@/components/custom-link";
+import ProjectsSection from "@/components/projects-section";
+
+export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Use the default components with any custom components
-    ...components,
-    // Override specific components if needed
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mb-4">{children}</h1>
-    ),
+    // Override specific components to match design system
+    h1: ({ children }) => <h1 className="text-label-1">{children}</h1>,
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold mb-3">{children}</h2>
+      <h2 className="text-label-1 text-secondary">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-bold mb-2">{children}</h3>
+      <h3 className="text-label-2 text-secondary">{children}</h3>
     ),
-    p: ({ children }) => <p className="mb-4">{children}</p>,
-    a: ({ href, children }) => (
-      <a href={href} className="text-blue-500 hover:text-blue-700 underline">
+    p: ({ children }) => (
+      <p className="text-body-1 text-secondary">{children}</p>
+    ),
+    a: ({ href, children, target, rel, ...props }) => (
+      <CustomLink
+        href={href}
+        target={target}
+        rel={rel}
+        {...props}
+        className="text-accent underline transition-colors hover:text-primary"
+      >
         {children}
-      </a>
+      </CustomLink>
+    ),
+    // Use the default components with any custom components (after our overrides)
+    ...components,
+    ProjectCard: ({
+      id,
+      title,
+      description,
+      link,
+      image,
+    }: ProjectCardProps) => (
+      <ProjectCard
+        id={id}
+        title={title}
+        description={description}
+        link={link}
+        image={image}
+      />
+    ),
+    Divider: () => <Divider />,
+    ProjectsSection: () => <ProjectsSection />,
+    ProjectMeta: ({ children }: { children: React.ReactNode }) => (
+      <div className="flex flex-wrap gap-1 mt-2">{children}</div>
+    ),
+    Tag: ({ children }: { children: React.ReactNode }) => (
+      <span className="px-2 py-1 bg-tertiary text-primary rounded text-label-2">
+        {children}
+      </span>
+    ),
+    Category: ({ children }: { children: React.ReactNode }) => (
+      <span className="px-3 py-1 bg-secondary text-primary rounded-full text-label-2">
+        {children}
+      </span>
+    ),
+    Paragraph: ({ children }: { children: React.ReactNode }) => (
+      <div className="flex flex-col gap-1">{children}</div>
     ),
   };
 }

@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background-primary: color(display-p3 0.957 0.945 0.918);
+
+  --desktop-container-max-width: 600px;
+  --mobile-container-max-width: 90%;
+
+  --background-primary: color(display-p3 0.985 0.982 0.978);
   --background-secondary: color(display-p3 0.914 0.902 0.875);
   --background-tertiary: color(display-p3 0.867 0.851 0.824);
+  --background-quaternary: color(display-p3 0.985 0.982 0.978);
+  --background-overlay: color(display-p3 0.985 0.982 0.978 / 0.5);
+  --background-accent: color(display-p3 0.929 0.502 0.031);
   --text-primary: color(display-p3 0.173 0.173 0.173);
   --text-secondary: color(display-p3 0.4 0.4 0.4);
   --text-tertiary: color(display-p3 0.502 0.502 0.502);
@@ -22,6 +29,9 @@
   --background-primary: color(display-p3 0.102 0.102 0.102);
   --background-secondary: color(display-p3 0.141 0.141 0.141);
   --background-tertiary: color(display-p3 0.18 0.18 0.18);
+  --background-quaternary: color(display-p3 0.22 0.22 0.22);
+  --background-accent: color(display-p3 0.8 0.45 0.031);
+  --background-overlay: color(display-p3 0.22 0.22 0.22 / 0.5);
   --text-primary: color(display-p3 0.91 0.902 0.89);
   --text-secondary: color(display-p3 0.639 0.639 0.639);
   --text-tertiary: color(display-p3 0.549 0.549 0.549);
@@ -34,12 +44,3 @@
   --border-tertiary: color(display-p3 0.549 0.549 0.549 / 0.1);
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.1s ease;
-
-  &:hover {
-    color: var(--accent-muted);
-  }
-}
