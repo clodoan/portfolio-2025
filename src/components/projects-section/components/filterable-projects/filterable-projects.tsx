@@ -9,8 +9,8 @@ type Category = "plugins" | "project" | "components" | "random" | "all";
 
 const categories: Record<Category, string> = {
   all: "All",
-  plugins: "Plugins",
   project: "Projects",
+  plugins: "Plugins",
   components: "Components",
   random: "Random",
 };
@@ -48,7 +48,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
               <div className="px-2 py-1 text-label-1 text-primary rounded-md relative z-10 bg-transparent cursor-pointer isolate hover:text-secondary transition-colors duration-200">
                 {isActive && (
                   <motion.div
-                    className="absolute size-1 bg-accent rounded-full left-1/2 -translate-x-1/2 bottom-0"
+                    className="absolute size-1 bg-accent rounded-full left-1/2 -translate-x-1/2 -bottom-1"
                     layoutId="activeTab"
                     key={activeFilter}
                     initial={{ y: 0 }}
