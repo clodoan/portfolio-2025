@@ -22,6 +22,7 @@ export type Project = {
   link?: string;
   image?: string;
   category: Category;
+  disabled?: boolean;
 };
 
 type FilterableProjectsProps = {
@@ -81,6 +82,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
               description={project.description}
               link={project.link}
               image={project.image}
+              disabled={project.disabled}
             />
           ))}
         </div>

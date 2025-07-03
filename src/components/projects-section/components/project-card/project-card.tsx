@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+import { cx } from "class-variance-authority";
 
 export type ProjectCardProps = {
   id: string;
@@ -10,6 +11,7 @@ export type ProjectCardProps = {
   description: string;
   link?: string;
   image?: string;
+  disabled?: boolean;
 };
 
 const ProjectCard = ({
@@ -18,12 +20,27 @@ const ProjectCard = ({
   description,
   link,
   image,
+  disabled,
 }: ProjectCardProps) => {
   const isExternal = !!link;
   const href = link || `/projects/${id}`;
 
   const children = (
-    <div className="cursor-pointer group flex gap-4 items-start hover:bg-secondary/50 transition-colors p-4 rounded-lg border border-tertiary hover:border-primary relative">
+    <div
+      className={cx(
+        "group flex gap-4 items-start  transition-colors p-4 rounded-lg border border-tertiary  relative",
+        {
+          "opacity-50 cursor-default pointer-events-none select-none": disabled,
+          "cursor-pointer hover:bg-secondary/50 hover:border-primary":
+            !disabled,
+        }
+      )}
+    >
+      {disabled && (
+        <span className="text-label-2 text-secondary absolute top-2 right-2">
+          Work in progress
+        </span>
+      )}
       <ArrowUpRightIcon className="size-4 text-accent absolute top-2 right-2 opacity-0 group-hover:opacity-70 transition-opacity" />
       <div className="size-12 bg-secondary rounded flex-0 p-1">
         {image && (
@@ -45,7 +62,12 @@ const ProjectCard = ({
 
   if (isExternal) {
     return (
-      <Link href={href} target="_blank" rel="noopener noreferrer">
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cx({ "pointer-events-none": disabled })}
+      >
         {children}
       </Link>
     );

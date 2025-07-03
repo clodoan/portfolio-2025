@@ -24,11 +24,12 @@ const projects: Project[] = [
   },
   {
     id: "internal-project",
-    title: "Internal project",
-    description: "A project I'm working on.",
-    image: "/plugins/black-and-white.svg",
+    title: "New ID doc capture flow",
+    description:
+      "Improved conversion rate of ID doc capture flow from 60% to +90%.",
     category: "project",
     link: "/projects/internal-project",
+    disabled: true,
   },
 ];
 
