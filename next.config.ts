@@ -1,4 +1,4 @@
-import type { NextConfig } from "next/types";
+import type NextConfig from "next";
 
 const nextConfig: NextConfig = {
   // Video optimization

@@ -1,12 +1,11 @@
 import type { MDXComponents } from "mdx/types";
-import Link from "@/components/link";
-import ProjectCard from "@/components/project-card";
+
+import ProjectCard, { type ProjectCardProps } from "@/components/project-card";
 import Divider from "@/components/divider";
+import CustomLink from "@/components/custom-link";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Use the default components with any custom components
-    ...components,
     // Override specific components to match design system
     h1: ({ children }) => <h1 className="text-label-1">{children}</h1>,
     h2: ({ children }) => (
@@ -18,35 +17,35 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => (
       <p className="text-body-1 text-secondary">{children}</p>
     ),
-    a: ({ href, children, ...props }) => (
-      <Link href={href || ""} external={href?.startsWith("http")} {...props}>
+    a: ({ href, children, target, rel, ...props }) => (
+      <CustomLink
+        href={href}
+        target={target}
+        rel={rel}
+        {...props}
+        className="text-accent underline transition-colors hover:text-primary"
+      >
         {children}
-      </Link>
+      </CustomLink>
     ),
-    // Custom components for portfolio
+    // Use the default components with any custom components (after our overrides)
+    ...components,
     ProjectCard: ({
       title,
       description,
       link,
       image,
-      external,
-    }: {
-      title: string;
-      description: string;
-      link: string;
-      image?: string;
-      external?: boolean;
-    }) => (
+      onClick,
+    }: ProjectCardProps) => (
       <ProjectCard
         title={title}
         description={description}
         link={link}
         image={image}
-        external={external}
+        onClick={onClick}
       />
     ),
     Divider: () => <Divider />,
-    // Project metadata components
     ProjectMeta: ({ children }: { children: React.ReactNode }) => (
       <div className="flex flex-wrap gap-1 mt-2">{children}</div>
     ),

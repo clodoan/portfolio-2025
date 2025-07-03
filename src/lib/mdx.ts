@@ -14,6 +14,24 @@ export interface ProjectFrontmatter {
   external?: boolean;
 }
 
+export interface WritingFrontmatter {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  tags?: string[];
+}
+
+export interface RandomFrontmatter {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  tags?: string[];
+}
+
 export interface PortfolioFrontmatter {
   title: string;
   subtitle: string;
@@ -21,6 +39,8 @@ export interface PortfolioFrontmatter {
 
 const contentDirectory = path.join(process.cwd(), "src/content");
 const projectsDirectory = path.join(contentDirectory, "projects");
+const writingsDirectory = path.join(contentDirectory, "writings");
+const randomDirectory = path.join(contentDirectory, "random");
 
 export async function getPortfolioContent() {
   const fullPath = path.join(contentDirectory, "portfolio.mdx");
@@ -85,4 +105,50 @@ export async function getAllTags(): Promise<string[]> {
   const projects = await getAllProjects();
   const allTags = projects.flatMap((project) => project.tags || []);
   return [...new Set(allTags)];
+}
+
+export async function getAllWritings(): Promise<WritingFrontmatter[]> {
+  const fileNames = fs.readdirSync(writingsDirectory);
+  const writings = fileNames
+    .filter((fileName) => fileName.endsWith(".mdx"))
+    .map((fileName) => {
+      const fullPath = path.join(writingsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data } = matter(fileContents);
+      return data as WritingFrontmatter;
+    });
+
+  return writings.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+export async function getWritingById(
+  id: string
+): Promise<WritingFrontmatter | undefined> {
+  const writings = await getAllWritings();
+  return writings.find((writing) => writing.id === id);
+}
+
+export async function getAllRandom(): Promise<RandomFrontmatter[]> {
+  const fileNames = fs.readdirSync(randomDirectory);
+  const randomItems = fileNames
+    .filter((fileName) => fileName.endsWith(".mdx"))
+    .map((fileName) => {
+      const fullPath = path.join(randomDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data } = matter(fileContents);
+      return data as RandomFrontmatter;
+    });
+
+  return randomItems.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+export async function getRandomById(
+  id: string
+): Promise<RandomFrontmatter | undefined> {
+  const randomItems = await getAllRandom();
+  return randomItems.find((item) => item.id === id);
 }

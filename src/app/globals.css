@@ -38,13 +38,3 @@
   --border-tertiary: color(display-p3 0.549 0.549 0.549 / 0.1);
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.1s ease;
-
-  &:hover {
-    color: var(--accent-muted);
-  }
-}
-

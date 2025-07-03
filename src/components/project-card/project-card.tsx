@@ -1,12 +1,16 @@
 import Image from "next/image";
-import Link from "../link";
+import Link from "next/link";
+import {
+  ArrowUpRightIcon,
+  ArrowsPointingOutIcon,
+} from "@heroicons/react/16/solid";
 
-type ProjectCardProps = {
+export type ProjectCardProps = {
   title: string;
   description: string;
   link: string;
   image?: string;
-  external?: boolean;
+  onClick?: () => void;
 };
 
 const ProjectCard = ({
@@ -14,31 +18,51 @@ const ProjectCard = ({
   description,
   link,
   image,
-  external = false,
+  onClick,
 }: ProjectCardProps) => {
-  return (
-    <div className="flex gap-4 items-start">
-      <div className="size-14 bg-secondary rounded flex-0 p-2">
-        {image ? (
+  const commonStyles =
+    "flex gap-4 items-start hover:bg-secondary/50 transition-colors p-4 rounded-lg border border-tertiary hover:border-primary relative group";
+
+  const Icon = external ? ArrowUpRightIcon : ArrowsPointingOutIcon;
+
+  const children = (
+    <>
+      <Icon className="size-4 text-accent absolute top-2 right-2 opacity-0 group-hover:opacity-70 transition-opacity" />
+      <div className="size-12 bg-secondary rounded flex-0 p-1">
+        {image && (
           <Image
             src={image}
             alt={title}
-            width={100}
-            height={100}
-            className="flex-0"
+            width={400}
+            height={400}
+            className="object-contain p-[1px]"
           />
-        ) : (
-          <div className="" />
         )}
       </div>
       <div className="flex flex-col flex-1">
-        <h3 className="text-label-1 text-secondary">{title}</h3>
+        <h3 className="text-label-1 text-primary">{title}</h3>
         <p className="text-body-1 text-secondary">{description}</p>
-        <Link href={link} size="small" external={external}>
-          Learn more
-        </Link>
       </div>
-    </div>
+    </>
+  );
+
+  if (link) {
+    return (
+      <Link
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={commonStyles}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <button type="button" onClick={onClick} className={commonStyles}>
+      {children}
+    </button>
   );
 };
 export default ProjectCard;

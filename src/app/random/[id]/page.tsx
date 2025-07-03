@@ -4,17 +4,17 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { getMDXComponents } from "../../../../mdx-components";
-import type { ProjectFrontmatter } from "@/lib/mdx";
+import type { RandomFrontmatter } from "@/lib/mdx";
 
-interface ProjectPageProps {
+interface RandomPageProps {
   params: {
     id: string;
   };
 }
 
 export async function generateStaticParams() {
-  const projectsDirectory = path.join(process.cwd(), "src/content/projects");
-  const fileNames = fs.readdirSync(projectsDirectory);
+  const randomDirectory = path.join(process.cwd(), "src/content/random");
+  const fileNames = fs.readdirSync(randomDirectory);
 
   return fileNames
     .filter((fileName) => fileName.endsWith(".mdx"))
@@ -23,18 +23,18 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function RandomPage({ params }: RandomPageProps) {
   const { id } = params;
-  const projectPath = path.join(
+  const randomPath = path.join(
     process.cwd(),
-    "src/content/projects",
+    "src/content/random",
     `${id}.mdx`
   );
 
   try {
-    const fileContents = fs.readFileSync(projectPath, "utf8");
+    const fileContents = fs.readFileSync(randomPath, "utf8");
     const { data, content } = matter(fileContents);
-    const frontmatter = data as ProjectFrontmatter;
+    const frontmatter = data as RandomFrontmatter;
 
     const components = getMDXComponents({});
 
@@ -46,15 +46,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <p className="text-body-1 text-secondary">
               {frontmatter.description}
             </p>
-            {frontmatter.link && (
-              <a
-                href={frontmatter.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-4 py-2 bg-primary text-background rounded hover:bg-primary/90 transition-colors"
-              >
-                View Project
-              </a>
+            <div className="flex items-center gap-4 text-sm text-secondary">
+              <span>{new Date(frontmatter.date).toLocaleDateString()}</span>
+              <span className="px-3 py-1 bg-tertiary text-primary rounded-full text-xs">
+                {frontmatter.category}
+              </span>
+            </div>
+            {frontmatter.tags && frontmatter.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {frontmatter.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-1 bg-background text-secondary rounded text-xs"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
           <div className="prose prose-invert max-w-none">
@@ -64,7 +72,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
     );
   } catch (error) {
-    console.error("Error loading project:", error);
+    console.error("Error loading random content:", error);
     notFound();
   }
 }
