@@ -5,14 +5,14 @@ import * as Tabs from "@radix-ui/react-tabs";
 import ProjectCard from "../project-card/project-card";
 import { motion } from "framer-motion";
 
-type Category = "figma-plugin" | "project" | "components" | "random" | "all";
+type Category = "plugins" | "project" | "components" | "random" | "all";
 
 const categories: Record<Category, string> = {
-  "all": "All",
-  "figma-plugin": "Figma Plugins",
-  "project": "Projects",
-  "components": "Components",
-  "random": "Random",
+  all: "All",
+  plugins: "Plugins",
+  project: "Projects",
+  components: "Components",
+  random: "Random",
 };
 
 export type Project = {
@@ -29,38 +29,47 @@ type FilterableProjectsProps = {
 };
 
 const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
-  const [activeFilter, setActiveFilter] = useState<Category>("all");    
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <Tabs.Root value={activeFilter} onValueChange={(value) => setActiveFilter(value as Category)}>
+    <Tabs.Root
+      value={activeFilter}
+      onValueChange={(value) => setActiveFilter(value as Category)}
+    >
       <Tabs.List className="flex space-x-1 relative">
         {Object.entries(categories).map(([category, label]) => {
           const isActive = category === activeFilter;
           return (
-          <Tabs.Trigger
-            key={category}
-            value={category}
-            asChild
-          >
-             <div className="px-2 py-1 text-label-1 text-primary rounded-md relative z-10 bg-transparent cursor-pointer isolate hover:text-secondary transition-colors duration-200"> 
-              {isActive && (
-                <motion.div
-                  className="absolute bg-quaternary rounded-md -z-10 inset-0"
-                  layoutId="activeTab"
-                  initial={false}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                  }}
-                />
-              )}
-              <span className={`relative z-10`}>{label}</span>
-            </div>
-          </Tabs.Trigger>
-        )})}
+            <Tabs.Trigger key={category} value={category} asChild>
+              <div className="px-2 py-1 text-label-1 text-primary rounded-md relative z-10 bg-transparent cursor-pointer isolate hover:text-secondary transition-colors duration-200">
+                {isActive && (
+                  <motion.div
+                    className="absolute size-1 bg-accent rounded-full left-1/2 -translate-x-1/2 bottom-0"
+                    layoutId="activeTab"
+                    key={activeFilter}
+                    initial={{ y: 0 }}
+                    animate={{ y: [0, 3, -3, 1, -1, 0] }}
+                    transition={{
+                      layout: {
+                        duration: 0.3,
+                        ease: "easeInOut",
+                      },
+                      y: {
+                        duration: 0.5,
+                        ease: "easeInOut",
+                      },
+                    }}
+                  />
+                )}
+                <span className="relative z-10">{label}</span>
+              </div>
+            </Tabs.Trigger>
+          );
+        })}
       </Tabs.List>
       <Tabs.Content value={activeFilter} className="mt-6">
         <div className="flex flex-col gap-4">
@@ -80,4 +89,4 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
   );
 };
 
-export default FilterableProjects; 
+export default FilterableProjects;

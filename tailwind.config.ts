@@ -23,6 +23,7 @@ export default {
         tertiary: "var(--background-tertiary)",
         quaternary: "var(--background-quaternary)",
         overlay: "var(--background-overlay)",
+        accent: "var(--background-accent)",
       },
       borderColor: {
         primary: "var(--border-primary)",
