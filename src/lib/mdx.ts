@@ -74,6 +74,23 @@ export async function getProjectById(
   return projects.find((project) => project.id === id);
 }
 
+export async function getProjectContentById(
+  id: string
+): Promise<{ frontmatter: ProjectFrontmatter; content: string } | undefined> {
+  try {
+    const fullPath = path.join(projectsDirectory, `${id}.mdx`);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    return {
+      frontmatter: data as ProjectFrontmatter,
+      content,
+    };
+  } catch {
+    return undefined;
+  }
+}
+
 export async function getProjectsByCategory(
   category: ProjectFrontmatter["category"]
 ): Promise<ProjectFrontmatter[]> {

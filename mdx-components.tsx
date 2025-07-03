@@ -31,18 +31,18 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     // Use the default components with any custom components (after our overrides)
     ...components,
     ProjectCard: ({
+      id,
       title,
       description,
       link,
       image,
-      onClick,
     }: ProjectCardProps) => (
       <ProjectCard
+        id={id}
         title={title}
         description={description}
         link={link}
         image={image}
-        onClick={onClick}
       />
     ),
     Divider: () => <Divider />,
@@ -50,14 +50,17 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       <div className="flex flex-wrap gap-1 mt-2">{children}</div>
     ),
     Tag: ({ children }: { children: React.ReactNode }) => (
-      <span className="px-2 py-1 bg-tertiary text-primary rounded text-xs">
+      <span className="px-2 py-1 bg-tertiary text-primary rounded text-label-2">
         {children}
       </span>
     ),
     Category: ({ children }: { children: React.ReactNode }) => (
-      <span className="px-3 py-1 bg-secondary text-primary rounded-full text-sm">
+      <span className="px-3 py-1 bg-secondary text-primary rounded-full text-label-2">
         {children}
       </span>
+    ),
+    Paragraph: ({ children }: { children: React.ReactNode }) => (
+      <div className="flex flex-col gap-1">{children}</div>
     ),
   };
 }
