@@ -24,7 +24,7 @@ const projects: Project[] = [
   },
   {
     id: "internal-project",
-    title: "New ID doc capture flow",
+    title: "New ID doc capture mobile flow",
     description:
       "Improved conversion rate of ID doc capture flow from 60% to +90%.",
     category: "project",
