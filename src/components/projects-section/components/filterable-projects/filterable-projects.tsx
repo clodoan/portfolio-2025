@@ -2,19 +2,20 @@
 
 import { useRef, useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import ProjectCard from "../project-card/project-card";
+import ProjectCard from "./components/project-card/project-card";
 import { motion, useMotionValueEvent } from "framer-motion";
 import { useScroll } from "motion/react";
 import { cva, cx } from "class-variance-authority";
+import VideoCard from "./components/video-card/video-card";
 
-type Category = "plugins" | "project" | "all";
+type Category = "plugins" | "project" | "components"; // | "all";
 type OverflowSide = "left" | "right" | "both" | "none";
 
 const categories: Record<Category, string> = {
-  all: "All",
+  // all: "All",  // TODO: add back when we have more projects
   project: "Projects",
   plugins: "Plugins",
-  // components: "Components",
+  components: "Components",
   // random: "Random",
 };
 
@@ -23,9 +24,10 @@ export type Project = {
   title: string;
   description: string;
   link?: string;
-  image?: string;
+  mediaAsset?: string;
   category: Category;
   disabled?: boolean;
+  type: "link" | "video" | "image";
 };
 
 type FilterableProjectsProps = {
@@ -50,13 +52,12 @@ const tabsListVariants = cva(
 );
 
 const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
-  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const [activeFilter, setActiveFilter] = useState<Category>("project");
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+  const filteredProjects = projects.filter(
+    (project) => project.category === activeFilter
+  );
 
   const [overflowSide, setOverflowSide] = useState<OverflowSide>("none");
 
@@ -128,17 +129,28 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
       </Tabs.List>
       <Tabs.Content value={activeFilter} asChild>
         <div className="flex flex-col gap-3 mt-3">
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              image={project.image}
-              disabled={project.disabled}
-            />
-          ))}
+          {filteredProjects.map(
+            ({ id, title, description, link, mediaAsset, disabled, type }) =>
+              type === "video" ? (
+                <VideoCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  description={description}
+                  playbackId={mediaAsset || ""}
+                />
+              ) : (
+                <ProjectCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  description={description}
+                  link={link}
+                  image={mediaAsset}
+                  disabled={disabled}
+                />
+              )
+          )}
         </div>
       </Tabs.Content>
     </Tabs.Root>

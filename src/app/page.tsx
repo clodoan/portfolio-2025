@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPortfolioContent } from "@/lib/mdx";
 import Divider from "@/components/divider";
-import ProjectCard from "@/components/projects-section/components/project-card";
+import ProjectCard from "@/components/projects-section/components/filterable-projects/components/project-card";
 import { getMDXComponents } from "../../mdx-components";
 
 export default async function Home() {
