@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { cx } from "class-variance-authority";
 
 export type CustomLinkProps = {
   href: string;
   target?: string;
   rel?: string;
   children: React.ReactNode;
-  className?: string;
 };
 
 const CustomLink = ({
@@ -14,7 +12,6 @@ const CustomLink = ({
   target,
   rel,
   children,
-  className,
   ...props
 }: CustomLinkProps) => (
   <Link
@@ -22,10 +19,7 @@ const CustomLink = ({
     target={target}
     rel={rel}
     {...props}
-    className={cx(
-      "text-accent transition-colors hover:text-accent-muted",
-      className
-    )}
+    className="text-accent transition-colors hover:text-accent-muted"
   >
     {children}
   </Link>
