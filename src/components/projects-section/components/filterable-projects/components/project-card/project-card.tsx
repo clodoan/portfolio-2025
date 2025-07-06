@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowUpRightIcon,
   CursorArrowRaysIcon,
 } from "@heroicons/react/24/outline";
 import { cx } from "class-variance-authority";
+import Image from "next/image";
+import Link from "next/link";
 
 export type ProjectCardProps = {
   id: string;

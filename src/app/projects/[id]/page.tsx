@@ -1,10 +1,10 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { notFound } from "next/navigation";
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
-import { getMDXComponents } from "../../../../mdx-components";
 import type { ProjectFrontmatter } from "@/lib/mdx";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
+import { getMDXComponents } from "../../../../mdx-components";
 
 interface ProjectPageProps {
   params: Promise<{

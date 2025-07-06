@@ -1,4 +1,5 @@
 import { Inter, Playfair_Display } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import ThemeWrapper from "@/components/theme-wrapper";
 import { metadata } from "./metadata";
@@ -21,7 +22,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body
         className={`${sansSerif.variable} ${robotoSerif.variable} antialiased min-h-screen isolate bg-background text-primary`}
       >
-        <ThemeWrapper>{children}</ThemeWrapper>
+        <NuqsAdapter>
+          <ThemeWrapper>{children}</ThemeWrapper>
+        </NuqsAdapter>
       </body>
     </html>
   );
