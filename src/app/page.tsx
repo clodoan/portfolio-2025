@@ -18,6 +18,10 @@ export default async function Home() {
         socialLinks={[
           { label: "GitHub", url: "https://github.com/clodoan" },
           {
+            label: "X",
+            url: "https://x.com/clodoan",
+          },
+          {
             label: "LinkedIn",
             url: "https://www.linkedin.com/in/claudioangrigiani/",
           },
