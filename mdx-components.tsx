@@ -1,11 +1,11 @@
 import type { MDXComponents } from "mdx/types";
 
+import CustomLink from "@/components/custom-link";
+import Divider from "@/components/divider";
+import ProjectsSection from "@/components/projects-section";
 import ProjectCard, {
   type ProjectCardProps,
 } from "@/components/projects-section/components/filterable-projects/components/project-card";
-import Divider from "@/components/divider";
-import CustomLink from "@/components/custom-link";
-import ProjectsSection from "@/components/projects-section";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {

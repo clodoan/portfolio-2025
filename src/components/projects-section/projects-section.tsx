@@ -43,6 +43,35 @@ const projects: Project[] = [
     disabled: false,
     type: "video",
   },
+  {
+    id: "multi-select",
+    title: "Multi select",
+    description: "A multi select component built with React and Tailwind CSS.",
+    category: "components",
+    mediaAsset: "OjGzGjaCLOmO6q02cqmEGY021t9Y2C31xIk4B027QG02EJw",
+    disabled: false,
+    type: "video",
+  },
+  {
+    id: "full-screen-filters",
+    title: "Full screen filters",
+    description:
+      "A full screen filters component built with React and Tailwind CSS.",
+    category: "components",
+    mediaAsset: "dv00y8QSIxdzcXNFoIT1yf1KgKrIIQqdMmKFm3z1xDbY",
+    disabled: false,
+    type: "video",
+  },
+  {
+    id: "risk-signal-glossary",
+    title: "Risk signal glossary",
+    description:
+      "A glossary of risk signals built with React and Tailwind CSS.",
+    category: "components",
+    mediaAsset: "DiIJe22Gz1502eS1xHSQ6WLjSebYGogwhHC9wugkFQBc",
+    disabled: false,
+    type: "video",
+  },
 ];
 
 const ProjectsSection = () => {

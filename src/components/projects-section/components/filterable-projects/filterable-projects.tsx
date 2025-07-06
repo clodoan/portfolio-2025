@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import ProjectCard from "./components/project-card/project-card";
+import { cva, cx } from "class-variance-authority";
 import { motion, useMotionValueEvent } from "framer-motion";
 import { useScroll } from "motion/react";
-import { cva, cx } from "class-variance-authority";
+import { useQueryState } from "nuqs";
+import { useRef, useState } from "react";
+import ProjectCard from "./components/project-card/project-card";
 import VideoCard from "./components/video-card/video-card";
 
 type Category = "plugins" | "project" | "components"; // | "all";
@@ -52,11 +53,17 @@ const tabsListVariants = cva(
 );
 
 const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
-  const [activeFilter, setActiveFilter] = useState<Category>("project");
+  const [activeFilter, setActiveFilter] = useQueryState("tab", {
+    defaultValue: "project",
+  });
+
+  // Ensure activeFilter is always a valid Category
+  const currentFilter: Category = (activeFilter as Category) || "project";
+
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const filteredProjects = projects.filter(
-    (project) => project.category === activeFilter
+    (project) => project.category === currentFilter
   );
 
   const [overflowSide, setOverflowSide] = useState<OverflowSide>("none");
@@ -86,8 +93,8 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
 
   return (
     <Tabs.Root
-      value={activeFilter}
-      onValueChange={(value) => setActiveFilter(value as Category)}
+      value={currentFilter}
+      onValueChange={(value) => setActiveFilter(value)}
       className="flex flex-col"
     >
       <Tabs.List
@@ -104,7 +111,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
                     <motion.div
                       className="absolute size-1 bg-accent rounded-full left-1/2 -translate-x-1/2 -bottom-1"
                       layoutId="activeTab"
-                      key={activeFilter}
+                      key={currentFilter}
                       initial={{ y: 0 }}
                       animate={{ y: [0, 3, -3, 1, -1, 0] }}
                       transition={{
@@ -127,7 +134,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
           })}
         </div>
       </Tabs.List>
-      <Tabs.Content value={activeFilter} asChild>
+      <Tabs.Content value={currentFilter} asChild>
         <div className="flex flex-col gap-3 mt-3">
           {filteredProjects.map(
             ({ id, title, description, link, mediaAsset, disabled, type }) =>

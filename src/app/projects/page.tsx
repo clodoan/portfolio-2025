@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getAllProjects } from "@/lib/mdx";
+import Link from "next/link";
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();

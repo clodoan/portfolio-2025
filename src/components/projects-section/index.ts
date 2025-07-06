@@ -1,1 +1,1 @@
-export { default } from "./projects-section"; 
+export { default } from "./projects-section";
