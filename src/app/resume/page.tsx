@@ -30,9 +30,9 @@ const CVPage = () => {
         <header className="mb-12">
           <div className="flex items-start justify-between mb-6">
             <div>
-              <h1 className="text-label-1 text-primary mb-2">
+              <Link href="/" className="text-label-1 text-primary mb-2">
                 {resumeData.personal.name}
-              </h1>
+              </Link>
               <p className="text-body-1 text-secondary">
                 {resumeData.personal.title}
               </p>
@@ -60,14 +60,12 @@ const CVPage = () => {
             })}
           </div>
         </header>
-
         <section className="mb-12">
           <h2 className="text-label-1 text-primary mb-4">About</h2>
           <p className="text-body-1 text-secondary leading-relaxed">
             {resumeData.personal.about}
           </p>
         </section>
-
         <section className="mb-12">
           <h2 className="text-label-1 text-primary mb-6">Experience</h2>
           <div className="space-y-8">

@@ -1,6 +1,5 @@
 "use client";
 
-import { Iphone } from "@zuude-ui/ios-mockups";
 import MuxPlayer from "@mux/mux-player-react";
 import { useState } from "react";
 
@@ -20,33 +19,24 @@ function IphoneMockupVideo({ playbackId }: IphoneMockupVideoProps) {
   };
 
   return (
-    <div className="flex justify-center py-10 rounded-2xl overflow-hidden bg-secondary my-10 mx-auto">
-      <Iphone
-        size="md"
-        style={
-          {
-            "--dynamic-island-color": "transparent",
-            "--screen-color": "transparent",
-          } as React.CSSProperties
-        }
-      >
-        <div className="relative w-full h-full">
-          {isLoading && (
-            <div className="absolute inset-0 z-10 bg-background-secondary">
-              <div className="w-full h-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background-tertiary/20 to-transparent animate-shimmer" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-tertiary text-center">
-                    <div className="text-label-2">Loading video...</div>
-                  </div>
-                </div>
+    <div className="flex justify-center py-5 rounded-2xl overflow-hidden bg-[url('/projects/backgrounds/nature-1.jpg')] bg-cover bg-center bg-no-repeat my-10 mx-auto relative">
+      {isLoading && (
+        <div className="absolute inset-0 z-10 bg-background-secondary">
+          <div className="w-full h-full relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background-tertiary/20 to-transparent animate-shimmer" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-tertiary text-center">
+                <div className="text-label-2">Loading video...</div>
               </div>
             </div>
-          )}
-
+          </div>
+        </div>
+      )}
+      <div className="inset-0 z-10 bg-background-secondary h-[480px]">
+        <div className="p-2 bg-white/10 rounded-2xl h-full backdrop-blur-md">
           <MuxPlayer
             playbackId={playbackId}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-xl overflow-hidden"
             autoPlay={true}
             muted={true}
             loop={true}
@@ -55,7 +45,7 @@ function IphoneMockupVideo({ playbackId }: IphoneMockupVideoProps) {
             onCanPlay={handleCanPlay}
           />
         </div>
-      </Iphone>
+      </div>
     </div>
   );
 }

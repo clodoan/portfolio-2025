@@ -10,6 +10,15 @@ type ImageCardProps = {
   disabled: boolean;
 };
 
+const getBackgroundImage = (id: string) => {
+  switch (id) {
+    case "new-doc-scan":
+      return "/projects/backgrounds/nature-3.jpg";
+    default:
+      return "/projects/backgrounds/nature-1.png";
+  }
+};
+
 const ImageCard = ({
   id,
   title,
@@ -28,7 +37,12 @@ const ImageCard = ({
       aria-disabled={disabled}
       id={id}
     >
-      <div className="relative size-full h-[240px] overflow-hidden bg-[url('/projects/backgrounds/nature-oleum.png')] bg-cover bg-center bg-no-repeat ">
+      <div
+        className="relative size-full h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${getBackgroundImage(id)})`,
+        }}
+      >
         {children}
       </div>
       <div className="absolute inset-0 bg-primary/50" />
