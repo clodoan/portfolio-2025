@@ -1,1 +1,1 @@
-export { default } from "./project-card";
+export { default } from "./image-card";
