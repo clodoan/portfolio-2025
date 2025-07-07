@@ -25,7 +25,7 @@ export const projects: Project[] = [
     description:
       "Improved conversion rate of ID doc capture flow from 60% to +90%.",
     mediaAsset: "/projects/id-doc/status-sheet.png",
-    category: "project",
+    category: "design",
     link: "/projects/new-doc-scan",
     disabled: false,
   },

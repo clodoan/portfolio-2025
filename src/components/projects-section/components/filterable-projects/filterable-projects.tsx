@@ -11,12 +11,12 @@ import PluginCard from "./components/plugin-card/plugin-card";
 import ImageCard from "./components/image-card/image-card";
 import Covers from "./components/covers/covers";
 
-type Category = "plugins" | "project" | "components"; // | "all";
+type Category = "design" | "plugins" | "components"; // | "all";
 type OverflowSide = "left" | "right" | "both" | "none";
 
 const categories: Record<Category, string> = {
   // all: "All",  // TODO: add back when we have more projects
-  project: "Projects",
+  design: "Design",
   plugins: "Plugins",
   components: "Components",
   // random: "Random",
@@ -55,11 +55,11 @@ const tabsListVariants = cva(
 
 const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
   const [activeFilter, setActiveFilter] = useQueryState("tab", {
-    defaultValue: "project",
+    defaultValue: "design",
   });
 
   // Ensure activeFilter is always a valid Category
-  const currentFilter: Category = (activeFilter as Category) || "project";
+  const currentFilter: Category = (activeFilter as Category) || "design";
 
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -91,6 +91,48 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
       setOverflowSide("none");
     }
   });
+
+  const renderProjectCard = (project: Project) => {
+    const { id, title, description, link, mediaAsset, category, disabled } =
+      project;
+
+    const cardComponents = {
+      components: (
+        <VideoCard
+          key={id}
+          id={id}
+          title={title}
+          description={description}
+          playbackId={mediaAsset || ""}
+        />
+      ),
+      plugins: (
+        <PluginCard
+          key={id}
+          id={id}
+          title={title}
+          description={description}
+          link={link}
+          image={mediaAsset}
+          disabled={disabled}
+        />
+      ),
+      design: (
+        <ImageCard
+          key={id}
+          id={id}
+          title={title}
+          description={description}
+          link={link || ""}
+          disabled={disabled || false}
+        >
+          <Covers image={mediaAsset || ""} id={id} />
+        </ImageCard>
+      ),
+    };
+
+    return cardComponents[category] || cardComponents.design;
+  };
 
   return (
     <Tabs.Root
@@ -137,46 +179,13 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
       </Tabs.List>
       <Tabs.Content value={currentFilter} asChild>
         <div className="flex flex-col gap-3 mt-3">
-          {filteredProjects.map(
-            ({
-              id,
-              title,
-              description,
-              link,
-              mediaAsset,
-              category,
-              disabled,
-            }) =>
-              category === "components" ? (
-                <VideoCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  description={description}
-                  playbackId={mediaAsset || ""}
-                />
-              ) : category === "plugins" ? (
-                <PluginCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  description={description}
-                  link={link}
-                  image={mediaAsset}
-                  disabled={disabled}
-                />
-              ) : (
-                <ImageCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  description={description}
-                  link={link || ""}
-                  disabled={disabled || false}
-                >
-                  <Covers image={mediaAsset || ""} id={id} />
-                </ImageCard>
-              )
+          {filteredProjects.map(renderProjectCard)}
+          {currentFilter === "design" && (
+            <div className="flex flex-col gap-3 text-label-1 text-primary text-center bg-quaternary rounded-md p-4">
+              <span className="text-label-2 text-tertiary select-none">
+                More projects coming soon...
+              </span>
+            </div>
           )}
         </div>
       </Tabs.Content>
