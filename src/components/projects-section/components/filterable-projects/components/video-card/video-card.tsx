@@ -10,21 +10,21 @@ const VideoCard = ({
   playbackId,
 }: { id: string; title: string; description: string; playbackId: string }) => {
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleError = () => {
     console.warn("Mux Player error occurred");
     setHasError(true);
+    setIsLoading(false);
   };
 
-  if (hasError) {
-    return (
-      <div className="w-full h-full rounded overflow-hidden border border-tertiary bg-background-secondary animate-pulse">
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="text-tertiary">Loading video...</div>
-        </div>
-      </div>
-    );
-  }
+  const handleLoadStart = () => {
+    setIsLoading(true);
+  };
+
+  const handleCanPlay = () => {
+    setIsLoading(false);
+  };
 
   if (hasError) {
     return (
@@ -40,7 +40,24 @@ const VideoCard = ({
   }
 
   return (
-    <div className="w-full h-full rounded overflow-hidden border border-tertiary relative">
+    <div className="w-full h-full rounded overflow-hidden border border-tertiary relative min-h-[200px]">
+      {/* Shimmer loading placeholder */}
+      {isLoading && (
+        <div className="absolute inset-0 z-10 bg-background-secondary">
+          <div className="w-full h-full relative overflow-hidden">
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background-tertiary/20 to-transparent animate-shimmer" />
+            {/* Loading text */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-tertiary text-center">
+                <div className="text-label-2">Loading video...</div>
+                <div className="text-label-3 mt-1">{title}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <MuxPlayer
         key={id}
         playbackId={playbackId}
@@ -54,6 +71,8 @@ const VideoCard = ({
         loop={true}
         playsInline={true}
         onError={handleError}
+        onLoadStart={handleLoadStart}
+        onCanPlay={handleCanPlay}
         style={
           {
             "--controls": "none",
