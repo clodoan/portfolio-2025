@@ -6,8 +6,10 @@ import { motion, useMotionValueEvent } from "framer-motion";
 import { useScroll } from "motion/react";
 import { useQueryState } from "nuqs";
 import { useRef, useState } from "react";
-import ProjectCard from "./components/project-card/project-card";
 import VideoCard from "./components/video-card/video-card";
+import PluginCard from "./components/plugin-card/plugin-card";
+import ImageCard from "./components/image-card/image-card";
+import Covers from "./components/covers/covers";
 
 type Category = "plugins" | "project" | "components"; // | "all";
 type OverflowSide = "left" | "right" | "both" | "none";
@@ -28,7 +30,6 @@ export type Project = {
   mediaAsset?: string;
   category: Category;
   disabled?: boolean;
-  type: "link" | "video" | "image";
 };
 
 type FilterableProjectsProps = {
@@ -137,8 +138,16 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
       <Tabs.Content value={currentFilter} asChild>
         <div className="flex flex-col gap-3 mt-3">
           {filteredProjects.map(
-            ({ id, title, description, link, mediaAsset, disabled, type }) =>
-              type === "video" ? (
+            ({
+              id,
+              title,
+              description,
+              link,
+              mediaAsset,
+              category,
+              disabled,
+            }) =>
+              category === "components" ? (
                 <VideoCard
                   key={id}
                   id={id}
@@ -146,8 +155,8 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
                   description={description}
                   playbackId={mediaAsset || ""}
                 />
-              ) : (
-                <ProjectCard
+              ) : category === "plugins" ? (
+                <PluginCard
                   key={id}
                   id={id}
                   title={title}
@@ -156,6 +165,17 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
                   image={mediaAsset}
                   disabled={disabled}
                 />
+              ) : (
+                <ImageCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  description={description}
+                  link={link || ""}
+                  disabled={disabled || false}
+                >
+                  <Covers image={mediaAsset || ""} id={id} />
+                </ImageCard>
               )
           )}
         </div>

@@ -52,37 +52,37 @@ export default {
         ".text-body-1": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.875rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "450",
         },
         ".text-body-2": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.75rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "450",
         },
         ".text-body-3": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.625rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "450",
         },
         ".text-label-1": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.875rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "500",
         },
         ".text-label-2": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.75rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "500",
         },
         ".text-label-3": {
           fontFamily: "var(--font-sans-serif)",
           fontSize: "0.625rem",
-          lineHeight: "1.6",
+          lineHeight: "1.75",
           fontWeight: "500",
         },
         ".text-heading-1": {
