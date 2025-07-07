@@ -5,15 +5,18 @@ import Divider from "@/components/divider";
 import ProjectsSection from "@/components/projects-section";
 import ProjectCard, {
   type ProjectCardProps,
-} from "@/components/projects-section/components/filterable-projects/components/project-card";
+} from "@/components/projects-section/components/filterable-projects/components/plugin-card";
+import IphoneMockupVideo, {
+  type IphoneMockupVideoProps,
+} from "@/components/iphone-mockup-video";
+import Image, { type ImageProps } from "next/image";
+import Paragraph, { type ParagraphProps } from "@/components/paragraph";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Override specific components to match design system
     h1: ({ children }) => <h1 className="text-label-1">{children}</h1>,
-    h2: ({ children }) => (
-      <h2 className="text-label-1 text-secondary">{children}</h2>
-    ),
+    h2: ({ children }) => <h2 className="text-label-1">{children}</h2>,
     h3: ({ children }) => (
       <h3 className="text-label-2 text-secondary">{children}</h3>
     ),
@@ -63,8 +66,14 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </span>
     ),
-    Paragraph: ({ children }: { children: React.ReactNode }) => (
-      <div className="flex flex-col gap-1">{children}</div>
+    Paragraph: ({ children, className }: ParagraphProps) => (
+      <Paragraph className={className}>{children}</Paragraph>
+    ),
+    IphoneMockupVideo: ({ playbackId }: IphoneMockupVideoProps) => (
+      <IphoneMockupVideo playbackId={playbackId} />
+    ),
+    Image: ({ src, alt, width, height }: ImageProps) => (
+      <Image src={src} alt={alt} width={width} height={height} />
     ),
   };
 }

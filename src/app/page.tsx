@@ -1,6 +1,6 @@
 import Divider from "@/components/divider";
 import FindMeOn from "@/components/find-me-on";
-import ProjectCard from "@/components/projects-section/components/filterable-projects/components/project-card";
+import ProjectCard from "@/components/projects-section/components/filterable-projects/components/plugin-card";
 import { getPortfolioContent } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getMDXComponents } from "../../mdx-components";
