@@ -1,5 +1,17 @@
 import { useState } from "react";
-import { pdf, type DocumentProps } from "@react-pdf/renderer";
+import { pdf, type DocumentProps, Font } from "@react-pdf/renderer";
+
+// Register Inter font
+Font.register({
+  family: "Inter",
+  src: "https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2",
+});
+
+// Fallback to Helvetica if Inter fails
+Font.register({
+  family: "Helvetica",
+  src: "Helvetica",
+});
 
 interface UseGeneratePDFOptions {
   filename?: string;
