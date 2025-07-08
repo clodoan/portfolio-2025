@@ -81,10 +81,10 @@ export const resumeData: ResumeData = {
       location: "United States",
       startDate: "Dec 2022",
       bullets: [
-        "Designed and implemented user-friendly interfaces for desktop and mobile platforms, enhancing user engagement.",
-        "Created seamless onboarding experiences for native apps, streamlining identity verification processes.",
+        "Designed and maintained the dashboard and onboarding experiences for the company's core product.",
+        "Designed a seamless onboarding experiences for native apps, using App Clips for more seamless identity verification.",
         "Redesigned mobile document scan flow, boosting conversion rates from 60% to over 90%.",
-        "Maintained a high-quality design system using Figma, Tailwind, NextJS, and ReactJS, ensuring design consistency.",
+        "Maintained a high-quality design system on both design and code sides, using Figma, Tailwind, NextJS, and ReactJS, ensuring design consistency and scalability.",
       ],
     },
     {
@@ -94,21 +94,24 @@ export const resumeData: ResumeData = {
       startDate: "Jun 2021",
       endDate: "Nov 2022",
       description:
-        "MainStreet helps startups discover & claim Federal and State tax credits in minutes, saving each company more than +50K on average. Designing our core R&D Taxes experience, the company's primary revenue source.",
+        "MainStreet helps startups discover & claim Federal and State tax credits in minutes, saving each company more than +50K on average.",
       bullets: [
-        "I lead the design of this core value proposition from when founders apply for credits to the moment they redeem them.",
-        "Led the design and implementation of the company's first Design System, improving the communication between Engineering and Design and helping to build new features more efficiently.",
+        "Designed the company's core R&D tax credit product, which served as the primary revenue source, overseeing the complete user journey from credit application to redemption for startup founders.",
+        "Designed and implemented the company's first Design System, improving the communication between Engineering and Design and helping to build new features more efficiently.",
       ],
     },
     {
-      title: "Cofounder | Head of Product and Design",
+      title: "Co-founder | Head of Product and Design",
       company: "Dorothy",
       location: "New York, New York, United States",
       startDate: "Mar 2020",
       endDate: "Dec 2021",
       description:
         "We created new ways to prepare and financially recover from natural disasters. Dorothy is backed by Plug and Play, Hustle Fund, CDL, and UrbanX, among other VC funds.",
-      bullets: ["I managed the Product and Design strategy and built our MVP."],
+      bullets: [
+        "I managed the Engineering and Design strategy, hiring and leading our initial team of ML Engineers to build our product.",
+        "Led the technical side of fundraising processes, including the company's first pre-seed and seed rounds.",
+      ],
     },
     {
       title: "Product Design Manager",
@@ -117,7 +120,7 @@ export const resumeData: ResumeData = {
       startDate: "Jan 2018",
       endDate: "May 2019",
       bullets: [
-        "Managed the first in-house Design team which implemented the bank's first Design System and conducted substantial design improvements for the apps (iOS & Android), online banking (web-app), and the customer loyalty platform.",
+        "Managed the first in-house Design team of 8 people, which implemented the bank's first Design System and conducted substantial design improvements for the apps (iOS & Android), online banking (web-app), and the customer loyalty platform.",
       ],
     },
     {

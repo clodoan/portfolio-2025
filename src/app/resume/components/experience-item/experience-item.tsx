@@ -37,9 +37,9 @@ const ExperienceItem = ({
     {bullets && (
       <ul className="text-body-1 text-secondary mb-3 space-y-1">
         {bullets.map((item) => (
-          <li key={item} className="flex items-start">
-            <span className="text-tertiary mr-2">•</span>
-            <span className="text-tertiary">{item}</span>
+          <li key={item} className="flex items-start gap-2">
+            <span>•</span>
+            <span>{item}</span>
           </li>
         ))}
       </ul>
