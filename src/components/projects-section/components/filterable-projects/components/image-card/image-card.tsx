@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { cx } from "class-variance-authority";
 
+export type DesignProjectId = "new-doc-scan" | "tax-credits";
+
 type ImageCardProps = {
-  id: string;
+  id: DesignProjectId | string;
   title: string;
   description: string;
   link: string;
@@ -10,10 +12,12 @@ type ImageCardProps = {
   disabled: boolean;
 };
 
-const getBackgroundImage = (id: string) => {
+const getBackgroundImage = (id: DesignProjectId | string) => {
   switch (id) {
     case "new-doc-scan":
       return "/projects/backgrounds/nature-3.jpg";
+    case "tax-credits":
+      return "/projects/backgrounds/nature-5.jpg";
     default:
       return "/projects/backgrounds/nature-1.png";
   }
@@ -40,7 +44,7 @@ const ImageCard = ({
       <div
         className="relative size-full h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${getBackgroundImage(id)})`,
+          backgroundImage: `url(${getBackgroundImage(id as DesignProjectId)})`,
         }}
       >
         {children}

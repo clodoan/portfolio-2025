@@ -63,4 +63,13 @@ export const projects: Project[] = [
     mediaAsset: "DiIJe22Gz1502eS1xHSQ6WLjSebYGogwhHC9wugkFQBc",
     disabled: false,
   },
+  {
+    id: "tax-credits",
+    title: "Tax credits",
+    description: "A redesign of our tax credits flow.",
+    category: "design",
+    mediaAsset: "/projects/tax-credits/solution-6.jpg",
+    link: "/projects/tax-credits",
+    disabled: false,
+  },
 ];

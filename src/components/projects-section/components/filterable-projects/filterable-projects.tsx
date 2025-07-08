@@ -126,7 +126,10 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
           link={link || ""}
           disabled={disabled || false}
         >
-          <Covers image={mediaAsset || ""} id={id} />
+          <Covers
+            image={mediaAsset || ""}
+            id={id as "new-doc-scan" | "tax-credits"}
+          />
         </ImageCard>
       ),
     };
