@@ -11,14 +11,14 @@ import PluginCard from "./components/plugin-card/plugin-card";
 import ImageCard from "./components/image-card/image-card";
 import Covers from "./components/covers/covers";
 
-type Category = "design" | "plugins" | "components"; // | "all";
+type Category = "design" | "plugins" | "designCode"; // | "all";
 type OverflowSide = "left" | "right" | "both" | "none";
 
 const categories: Record<Category, string> = {
   // all: "All",  // TODO: add back when we have more projects
   design: "Design",
-  plugins: "Plugins",
-  components: "Components",
+  designCode: "Design + Code",
+  plugins: "Figma Plugins",
   // random: "Random",
 };
 
@@ -97,7 +97,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
       project;
 
     const cardComponents = {
-      components: (
+      designCode: (
         <VideoCard
           key={id}
           id={id}
