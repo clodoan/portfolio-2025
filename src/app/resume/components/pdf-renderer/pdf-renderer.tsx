@@ -120,7 +120,7 @@ const PDFRenderer = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Experience</Text>
 
-          {resumeData.experience.slice(0, 3).map((exp, index) => (
+          {resumeData.experience.map((exp, index) => (
             <View
               key={`${exp.title}-${exp.company}-${index}`}
               style={styles.section}
@@ -149,7 +149,7 @@ const PDFRenderer = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Education</Text>
 
-          {resumeData.education.slice(0, 2).map((edu, index) => (
+          {resumeData.education.map((edu, index) => (
             <View
               key={`${edu.degree}-${edu.school}-${index}`}
               style={styles.section}
