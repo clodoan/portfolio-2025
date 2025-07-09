@@ -7,8 +7,25 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     backgroundColor: "#ffffff",
   },
-  header: {
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 32,
+  },
+  contactInfoContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
+  contactInfo: {
+    fontSize: 8,
+    marginBottom: 4,
+    lineHeight: 1.5,
+    color: "#374151",
+    textAlign: "right",
+    opacity: 0.8,
   },
   title: {
     fontSize: 10,
@@ -23,12 +40,7 @@ const styles = StyleSheet.create({
     color: "#6b7280",
     lineHeight: 1.5,
   },
-  contactInfo: {
-    fontSize: 10,
-    marginBottom: 4,
-    lineHeight: 1.5,
-    color: "#374151",
-  },
+
   section: {
     marginBottom: 16,
   },
@@ -66,6 +78,19 @@ const styles = StyleSheet.create({
     lineHeight: 1.6,
     color: "#374151",
   },
+  bulletPointContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    gap: 4,
+  },
+  bulletPointText: {
+    fontSize: 10,
+    marginBottom: 2,
+    lineHeight: 1.6,
+    color: "#374151",
+  },
   bulletPoint: {
     fontSize: 10,
     marginBottom: 2,
@@ -87,7 +112,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.5,
   },
   skills: {
-    fontSize: 10,
+    fontSize: 8,
     marginBottom: 4,
     lineHeight: 1.6,
     color: "#374151",
@@ -100,16 +125,29 @@ const PDFRenderer = () => {
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.title}>{resumeData.personal.name}</Text>
-          <Text style={styles.subtitle}>{resumeData.personal.title}</Text>
-          {resumeData.personal.contacts.map((contact, index) => (
-            <Text key={`${contact.type}-${index}`} style={styles.contactInfo}>
-              {contact.label}
-            </Text>
-          ))}
-        </View>
+        <View style={styles.headerContainer}>
+          <View>
+            <Text style={styles.title}>{resumeData.personal.name}</Text>
+            <Text style={styles.subtitle}>{resumeData.personal.title}</Text>
+          </View>
 
+          <View style={styles.contactInfoContainer}>
+            {resumeData.personal.contacts.map((contact, index) => {
+              if (contact.type === "location" || contact.type === "website") {
+                return null;
+              }
+
+              return (
+                <Text
+                  key={`${contact.type}-${index}`}
+                  style={styles.contactInfo}
+                >
+                  {contact.label}
+                </Text>
+              );
+            })}
+          </View>
+        </View>
         {/* About */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>About</Text>
@@ -124,6 +162,7 @@ const PDFRenderer = () => {
             <View
               key={`${exp.title}-${exp.company}-${index}`}
               style={styles.section}
+              break={exp.title === "Head of Product Design"}
             >
               <Text style={styles.jobTitle}>{exp.title}</Text>
               <Text style={styles.company}>{exp.company}</Text>
@@ -134,12 +173,13 @@ const PDFRenderer = () => {
                 <Text style={styles.description}>{exp.description}</Text>
               )}
               {exp.bullets?.map((bullet, bulletIndex) => (
-                <Text
+                <View
                   key={`${exp.title}-bullet-${bulletIndex}`}
-                  style={styles.bulletPoint}
+                  style={styles.bulletPointContainer}
                 >
-                  • {bullet}
-                </Text>
+                  <Text style={styles.bulletPoint}>•</Text>
+                  <Text style={styles.bulletPointText}>{bullet}</Text>
+                </View>
               ))}
             </View>
           ))}

@@ -217,6 +217,7 @@ export const resumeData: ResumeData = {
       school: "KTH Royal Institute of Technology",
       field: "Environmental Science",
       startYear: "2011",
+      endYear: "2012",
     },
     {
       degree: "High School",
@@ -224,20 +225,15 @@ export const resumeData: ResumeData = {
       startYear: "2002",
       endYear: "2006",
     },
-    {
-      degree: "Lean UI/UX",
-      school: "Universidad de Palermo",
-      startYear: "2015",
-    },
   ],
   skills: [
     {
       title: "Design Tools",
-      skills: ["Figma", "Sketch", "AI Generative Design"],
+      skills: ["Figma", "Sketch"],
     },
     {
       title: "Development",
-      skills: ["React", "NextJS", "Tailwind CSS"],
+      skills: ["React", "NextJS", "Tailwind CSS", "Python"],
     },
   ],
   lastUpdated: "January 2024",
