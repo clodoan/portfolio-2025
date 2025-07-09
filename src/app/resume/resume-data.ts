@@ -140,9 +140,9 @@ export const resumeData: ResumeData = {
       startDate: "Feb 2018",
       endDate: "Apr 2019",
       bullets: [
-        "Redesigned all booking flows to enhance user experience, resulting in a more modern and intuitive interface.",
-        "Successfully migrated design assets from Sketch to Figma",
-        "Established foundational elements for a comprehensive design system",
+        "Redesigned all booking flows to enhance user experience.",
+        "Successfully migrated all design assets from Sketch to Figma.",
+        "Established foundational elements for a comprehensive design system.",
       ],
     },
     {
@@ -152,9 +152,9 @@ export const resumeData: ResumeData = {
       startDate: "Sep 2016",
       endDate: "Sep 2017",
       bullets: [
-        "Spearheaded the Argentinian edition of Masisa's acceleration program, driving innovation in architecture and construction.",
-        "Identified and selected high-potential startups, enhancing the program's impact on the industry.",
-        "Provided mentorship to incubated companies, shaping product iterations and market strategies.",
+        "Led the Argentinian launch of Masisa's acceleration program, fostering innovation in architecture and construction.",
+        "Sourced and selected top-performing startups, significantly increasing the program's industry influence.",
+        "Mentored incubated companies, guiding product development and refining go-to-market strategies.",
       ],
     },
     {
@@ -163,9 +163,11 @@ export const resumeData: ResumeData = {
       location: "Buenos Aires, Argentina",
       startDate: "Oct 2014",
       endDate: "Aug 2016",
+      description:
+        "CRAN.IO was a hardware and software agency that provided services to startups and companies.",
       bullets: [
-        "Oversaw the product and design strategy for more than ten seed-stage startups and helped them build their first versions of their products.",
-        "Directed a company spinoff, Prismetic Analytics, which provided information about visitors in brick-and-mortar stores using infrared sensors and a cloud-based client.",
+        "Led product and design strategy for over ten seed-stage startups, guiding them from concept to launch of their initial products.",
+        "Launched and managed Prismetic Analytics, a spinoff that delivered actionable in-store visitor insights using infrared sensor technology and a cloud-based analytics platform.",
       ],
     },
     {
@@ -174,22 +176,24 @@ export const resumeData: ResumeData = {
       location: "Buenos Aires, Argentina",
       startDate: "Nov 2012",
       endDate: "Nov 2014",
+      description:
+        "WoodpeckeR was an industrial design studio that created wooden products for smartphones, tablets, and other devices.",
       bullets: [
-        "Created and designed wooden wireless speakers and cases for smartphones",
         "Awarded the 'Innovative Design' Prize in the 'International Design Fair 2013' in Metropolitan Design Center of Buenos Aires (CMD).",
         "Permanent stock in Museum of Latin American Modern Art (MALBA) official store (2013)",
       ],
     },
     {
-      title: "Co-founder • CEO",
-      company: "ComeCasero • 500 Startups Latin America",
+      title: "Co-founder & CEO",
+      company: "ComeCasero (a 500 Startups Latin America company)",
       location: "Mexico City Area, Mexico",
       startDate: "Oct 2013",
       endDate: "Oct 2014",
       description:
         "ComeCasero was an online marketplace for homemade food to discover and order the best meals from neighboring cooks.",
       bullets: [
-        "Led the food marketplace operations and products in Buenos Aires and Mexico City.",
+        "Co-founded the company with a friend and we raised a seed round from 500 Startups Latin America.",
+        "Designed the company's first version of the product and led launch strategy and operations in Mexico City.",
       ],
     },
   ],
