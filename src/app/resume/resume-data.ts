@@ -114,7 +114,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Product Design Manager",
+      title: "Head of Product Design",
       company: "Banco Galicia",
       location: "Argentina",
       startDate: "Jan 2018",
@@ -134,7 +134,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Freelance Product Designer",
+      title: "Staff Product Designer (Contract)",
       company: "Explore-Share.com",
       location: "Buenos Aires, Argentina",
       startDate: "Feb 2018",
