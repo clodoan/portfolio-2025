@@ -11,6 +11,10 @@ import IphoneMockupVideo, {
 } from "@/components/iphone-mockup-video";
 import Image, { type ImageProps } from "next/image";
 import Paragraph, { type ParagraphProps } from "@/components/paragraph";
+import FramedImage, { type FramedImageProps } from "@/components/framed-image";
+import ExpandableImage, {
+  type ExpandableImageProps,
+} from "@/components/expandable-image";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -74,6 +78,12 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     ),
     Image: ({ src, alt, width, height }: ImageProps) => (
       <Image src={src} alt={alt} width={width} height={height} />
+    ),
+    FramedImage: ({ children, backgroundImage }: FramedImageProps) => (
+      <FramedImage backgroundImage={backgroundImage}>{children}</FramedImage>
+    ),
+    ExpandableImage: ({ children }: ExpandableImageProps) => (
+      <ExpandableImage>{children}</ExpandableImage>
     ),
   };
 }

@@ -2,13 +2,23 @@
 
 import MuxPlayer from "@mux/mux-player-react";
 import { useState } from "react";
+import { cx } from "class-variance-authority";
+
+export type VideoCardProps = {
+  id: string;
+  title: string;
+  description: string;
+  playbackId: string;
+  className?: string;
+};
 
 const VideoCard = ({
   id,
   title,
   description,
   playbackId,
-}: { id: string; title: string; description: string; playbackId: string }) => {
+  className,
+}: VideoCardProps) => {
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,8 +50,12 @@ const VideoCard = ({
   }
 
   return (
-    <div className="w-full h-full rounded overflow-hidden border border-tertiary relative min-h-[200px]">
-      {/* Shimmer loading placeholder */}
+    <div
+      className={cx(
+        "w-full h-full rounded overflow-hidden border border-tertiary relative min-h-[200px]",
+        className
+      )}
+    >
       {isLoading && (
         <div className="absolute inset-0 z-10 bg-background-secondary">
           <div className="w-full h-full relative overflow-hidden">

@@ -1,4 +1,4 @@
-import type { Project } from "./components/filterable-projects/filterable-projects";
+import type { Project } from "./projects-section.types";
 
 export const projects: Project[] = [
   {
@@ -27,6 +27,8 @@ export const projects: Project[] = [
     mediaAsset: "/projects/id-doc/status-sheet.png",
     category: "design",
     link: "/projects/new-doc-scan",
+    year: 2025,
+    company: "Footprint",
     disabled: false,
   },
   {
@@ -61,6 +63,17 @@ export const projects: Project[] = [
       "A glossary of risk signals built with React and Tailwind CSS.",
     category: "designCode",
     mediaAsset: "DiIJe22Gz1502eS1xHSQ6WLjSebYGogwhHC9wugkFQBc",
+    disabled: false,
+  },
+  {
+    id: "tax-credits",
+    title: "Tax credits",
+    description: "A redesign of our tax credits flow.",
+    category: "design",
+    mediaAsset: "/projects/tax-credits/solution-6.jpg",
+    link: "/projects/tax-credits",
+    year: 2022,
+    company: "Mainstreet",
     disabled: false,
   },
 ];
