@@ -23,12 +23,14 @@ const ImageCard = ({
   link,
   children,
   disabled,
+  year,
+  company,
 }: ImageCardProps) => {
   return (
     <Link
       href={link}
       className={cx(
-        "flex flex-col rounded-lg overflow-hidden relative border border-tertiary box-border hover:border-primary transition-colors duration-200",
+        "flex flex-col rounded md:rounded-lg overflow-hidden relative border border-tertiary box-border hover:border-primary transition-colors duration-200",
         { "opacity-50 pointer-events-none": disabled }
       )}
       aria-disabled={disabled}
@@ -44,7 +46,12 @@ const ImageCard = ({
       </div>
       <div className="absolute inset-0 bg-primary/50" />
       <div className="flex flex-col gap-2 bg-primary p-4">
-        <h1 className="text-label-1 text-primary">{title}</h1>
+        <div className="flex justify-between gap-2">
+          <h1 className="text-label-1 text-primary">{title}</h1>
+          <p className="text-body-2 font-mono text-tertiary">
+            {company} <span className="text-tertiary opacity-25">|</span> {year}
+          </p>
+        </div>
         <p className="text-body-1 text-secondary">{description}</p>
       </div>
     </Link>

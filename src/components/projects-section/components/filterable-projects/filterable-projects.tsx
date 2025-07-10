@@ -81,8 +81,17 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
   });
 
   const renderProjectCard = (project: Project) => {
-    const { id, title, description, link, mediaAsset, category, disabled } =
-      project;
+    const {
+      id,
+      title,
+      description,
+      link,
+      mediaAsset,
+      category,
+      disabled,
+      year,
+      company,
+    } = project;
 
     const cardComponents = {
       designCode: (
@@ -113,6 +122,8 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
           description={description}
           link={link || ""}
           disabled={disabled || false}
+          year={year}
+          company={company}
         >
           <Covers image={mediaAsset || ""} id={id} />
         </ImageCard>

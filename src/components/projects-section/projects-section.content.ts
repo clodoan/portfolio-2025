@@ -27,6 +27,8 @@ export const projects: Project[] = [
     mediaAsset: "/projects/id-doc/status-sheet.png",
     category: "design",
     link: "/projects/new-doc-scan",
+    year: 2025,
+    company: "Footprint",
     disabled: false,
   },
   {
@@ -70,6 +72,8 @@ export const projects: Project[] = [
     category: "design",
     mediaAsset: "/projects/tax-credits/solution-6.jpg",
     link: "/projects/tax-credits",
+    year: 2022,
+    company: "Mainstreet",
     disabled: false,
   },
 ];

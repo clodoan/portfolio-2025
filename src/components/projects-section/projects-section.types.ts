@@ -1,5 +1,6 @@
 export type Category = "design" | "plugins" | "designCode"; // | "all";
 export type OverflowSide = "left" | "right" | "both" | "none";
+export type Companies = "Mainstreet" | "Footprint";
 export type ProjectsIDs =
   | "tax-credits"
   | "new-doc-scan"
@@ -18,6 +19,8 @@ export type Project = {
   mediaAsset?: string;
   category: Category;
   disabled?: boolean;
+  year?: number;
+  company?: Companies;
 };
 
 export type FilterableProjectsProps = {
