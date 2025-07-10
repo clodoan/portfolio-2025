@@ -26,7 +26,7 @@ const ExpandableImage = ({ children }: ExpandableImageProps) => {
       <Dialog.Trigger asChild>
         <motion.button
           type="button"
-          className="cursor-pointer transition-transform"
+          className="cursor-pointer transition-transform rounded border border-tertiary overflow-hidden"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

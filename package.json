@@ -66,10 +66,6 @@
   },
   "packageManager": "pnpm@10.12.1",
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "ffmpeg-static",
-      "sharp"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "ffmpeg-static", "sharp"]
   }
 }

@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import type { DesignProjectId } from "../image-card/image-card";
+import type { ProjectsIDs } from "../../../../projects-section.types";
 
 type CoversProps = {
   image: string;
-  id: DesignProjectId;
+  id: ProjectsIDs;
 };
 
 const Covers = ({ image, id }: CoversProps) => {

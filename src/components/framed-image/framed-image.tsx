@@ -27,7 +27,7 @@ const FramedImage = ({ children, backgroundImage }: FramedImageProps) => {
       <Dialog.Trigger asChild>
         <motion.button
           type="button"
-          className="flex flex-col rounded-2xl p-3 max-w-full overflow-hidden items-center justify-center bg-cover bg-center bg-no-repeat cursor-pointer transition-transform"
+          className="flex flex-col rounded-2xl p-3 max-w-full overflow-hidden items-center justify-center bg-cover bg-center bg-no-repeat cursor-pointer transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus:outline-none"
           style={{
             backgroundImage: `url(${backgroundImage})`,
             marginBlock: "1rem",

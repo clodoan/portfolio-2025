@@ -10,9 +10,12 @@ import VideoCard from "./components/video-card/video-card";
 import PluginCard from "./components/plugin-card/plugin-card";
 import ImageCard from "./components/image-card/image-card";
 import Covers from "./components/covers/covers";
-
-type Category = "design" | "plugins" | "designCode"; // | "all";
-type OverflowSide = "left" | "right" | "both" | "none";
+import type {
+  Category,
+  OverflowSide,
+  Project,
+  FilterableProjectsProps,
+} from "../../projects-section.types";
 
 const categories: Record<Category, string> = {
   // all: "All",  // TODO: add back when we have more projects
@@ -20,20 +23,6 @@ const categories: Record<Category, string> = {
   designCode: "Design + Code",
   plugins: "Figma Plugins",
   // random: "Random",
-};
-
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-  link?: string;
-  mediaAsset?: string;
-  category: Category;
-  disabled?: boolean;
-};
-
-type FilterableProjectsProps = {
-  projects: Project[];
 };
 
 const tabsListVariants = cva(
@@ -58,7 +47,6 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
     defaultValue: "design",
   });
 
-  // Ensure activeFilter is always a valid Category
   const currentFilter: Category = (activeFilter as Category) || "design";
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -126,10 +114,7 @@ const FilterableProjects = ({ projects }: FilterableProjectsProps) => {
           link={link || ""}
           disabled={disabled || false}
         >
-          <Covers
-            image={mediaAsset || ""}
-            id={id as "new-doc-scan" | "tax-credits"}
-          />
+          <Covers image={mediaAsset || ""} id={id} />
         </ImageCard>
       ),
     };

@@ -1,4 +1,4 @@
-import type { Project } from "./components/filterable-projects/filterable-projects";
+import type { Project } from "./projects-section.types";
 
 export const projects: Project[] = [
   {

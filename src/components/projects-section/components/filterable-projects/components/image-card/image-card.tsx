@@ -1,18 +1,11 @@
 import Link from "next/link";
 import { cx } from "class-variance-authority";
+import type {
+  ImageCardProps,
+  ProjectsIDs,
+} from "../../../../projects-section.types";
 
-export type DesignProjectId = "new-doc-scan" | "tax-credits";
-
-type ImageCardProps = {
-  id: DesignProjectId | string;
-  title: string;
-  description: string;
-  link: string;
-  children: React.ReactNode;
-  disabled: boolean;
-};
-
-const getBackgroundImage = (id: DesignProjectId | string) => {
+const getBackgroundImage = (id: ProjectsIDs) => {
   switch (id) {
     case "new-doc-scan":
       return "/projects/backgrounds/nature-3.jpg";
@@ -44,7 +37,7 @@ const ImageCard = ({
       <div
         className="relative size-full h-[240px] overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${getBackgroundImage(id as DesignProjectId)})`,
+          backgroundImage: `url(${getBackgroundImage(id as ProjectsIDs)})`,
         }}
       >
         {children}
