@@ -45,10 +45,10 @@ const ProjectCard = ({
       >
         <div className="absolute inset-0 z-10">{children}</div>
       </div>
-      <div className="flex flex-col gap-1 p-3">
-        <h3 className="text-label-1 text-primary flex items-center gap-2">
+      <div className="flex flex-col gap-1 py-3 md:px-3">
+        <h3 className="text-label-1 text-primary">
           {title}
-          <span className="text-body-1 text-secondary">({year})</span>
+          <span className="text-body-1 text-secondary ml-2">({year})</span>
         </h3>
         <p className="text-body-1 text-secondary">{description}</p>
       </div>
