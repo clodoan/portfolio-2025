@@ -30,6 +30,15 @@ export default {
         secondary: "var(--border-secondary)",
         tertiary: "var(--border-tertiary)",
       },
+      outlineColor: {
+        primary: "var(--outline-primary)",
+        tertiary: "var(--outline-tertiary)",
+      },
+      maxWidth: {
+        "container-mobile": "var(--mobile-container-max-width)",
+        "container-desktop": "var(--desktop-container-max-width)",
+        "container-desktop-wide": "var(--desktop-container-max-width-wide)",
+      },
       fontFamily: {
         sans: ["var(--font-sans-serif)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)"],

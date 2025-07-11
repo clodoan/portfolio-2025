@@ -4,6 +4,7 @@
 
 :root {
   --desktop-container-max-width: 600px;
+  --desktop-container-max-width-wide: 1200px;
   --mobile-container-max-width: 90%;
 
   --background-primary: color(display-p3 0.985 0.982 0.978);
@@ -22,6 +23,8 @@
   --border-primary: color(display-p3 0.173 0.173 0.173 / 0.2);
   --border-secondary: color(display-p3 0.4 0.4 0.4 / 0.15);
   --border-tertiary: color(display-p3 0.502 0.502 0.502 / 0.1);
+  --outline-primary: color(display-p3 0.173 0.173 0.173 / 0.2);
+  --outline-tertiary: color(display-p3 0.502 0.502 0.502 / 0.1);
 }
 
 .dark {
@@ -41,6 +44,8 @@
   --border-primary: color(display-p3 0.91 0.902 0.89 / 0.2);
   --border-secondary: color(display-p3 0.639 0.639 0.639 / 0.15);
   --border-tertiary: color(display-p3 0.549 0.549 0.549 / 0.1);
+  --outline-primary: color(display-p3 0.91 0.902 0.89 / 0.2);
+  --outline-tertiary: color(display-p3 0.549 0.549 0.549 / 0.1);
 }
 
 /* Media Chrome and Mux Player fixes */
@@ -48,6 +53,9 @@ mux-player {
   --controls: none !important;
   --media-object-fit: cover !important;
   --media-object-position: center !important;
+  --media-aspect-ratio: auto !important;
+  --media-height: 100% !important;
+  --media-width: 100% !important;
 }
 
 /* Ensure Media Chrome styles are properly loaded */

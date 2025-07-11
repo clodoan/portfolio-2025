@@ -2,19 +2,28 @@ import type { MDXComponents } from "mdx/types";
 
 import CustomLink from "@/components/custom-link";
 import Divider from "@/components/divider";
-import ProjectsSection from "@/components/projects-section";
 import ProjectCard, {
   type ProjectCardProps,
-} from "@/components/projects-section/components/filterable-projects/components/plugin-card";
-import IphoneMockupVideo, {
-  type IphoneMockupVideoProps,
-} from "@/components/iphone-mockup-video";
+} from "@/components/project-card/project-card";
 import Image, { type ImageProps } from "next/image";
 import Paragraph, { type ParagraphProps } from "@/components/paragraph";
 import FramedImage, { type FramedImageProps } from "@/components/framed-image";
 import ExpandableImage, {
   type ExpandableImageProps,
 } from "@/components/expandable-image";
+import Covers, {
+  type CoversProps,
+} from "@/components/project-card/components/covers";
+import VideoCard, { type VideoCardProps } from "@/components/video-card";
+import IphoneMockupVideo, {
+  type IphoneMockupVideoProps,
+} from "@/components/iphone-mockup-video";
+import IphoneMockupImage, {
+  type IphoneMockupImageProps,
+} from "@/components/iphone-mockup-image";
+import ResponsiveGrid, {
+  type ResponsiveGridProps,
+} from "@/components/responsive-grid";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -40,50 +49,94 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     ),
     // Use the default components with any custom components (after our overrides)
     ...components,
-    ProjectCard: ({
-      id,
-      title,
-      description,
-      link,
-      image,
-    }: ProjectCardProps) => (
-      <ProjectCard
-        id={id}
-        title={title}
-        description={description}
-        link={link}
-        image={image}
-      />
-    ),
     Divider: () => <Divider />,
-    ProjectsSection: () => <ProjectsSection />,
     ProjectMeta: ({ children }: { children: React.ReactNode }) => (
       <div className="flex flex-wrap gap-1 mt-2">{children}</div>
     ),
-    Tag: ({ children }: { children: React.ReactNode }) => (
-      <span className="px-2 py-1 bg-tertiary text-primary rounded text-label-2">
+    Paragraph: ({ children, className, customMaxWidth }: ParagraphProps) => (
+      <Paragraph className={className} customMaxWidth={customMaxWidth}>
         {children}
-      </span>
+      </Paragraph>
     ),
-    Category: ({ children }: { children: React.ReactNode }) => (
-      <span className="px-3 py-1 bg-secondary text-primary rounded-full text-label-2">
-        {children}
-      </span>
-    ),
-    Paragraph: ({ children, className }: ParagraphProps) => (
-      <Paragraph className={className}>{children}</Paragraph>
-    ),
-    IphoneMockupVideo: ({ playbackId }: IphoneMockupVideoProps) => (
-      <IphoneMockupVideo playbackId={playbackId} />
-    ),
-    Image: ({ src, alt, width, height }: ImageProps) => (
-      <Image src={src} alt={alt} width={width} height={height} />
+    Image: ({ src, alt, width, height, className }: ImageProps) => (
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+      />
     ),
     FramedImage: ({ children, backgroundImage }: FramedImageProps) => (
       <FramedImage backgroundImage={backgroundImage}>{children}</FramedImage>
     ),
-    ExpandableImage: ({ children }: ExpandableImageProps) => (
-      <ExpandableImage>{children}</ExpandableImage>
+    ExpandableImage: ({ image }: ExpandableImageProps) => (
+      <ExpandableImage image={image} />
+    ),
+    ProjectCard: ({
+      id,
+      company,
+      link,
+      children,
+      disabled,
+      backgroundImage,
+      title,
+      description,
+      year,
+    }: ProjectCardProps) => (
+      <ProjectCard
+        id={id}
+        company={company}
+        link={link}
+        disabled={disabled}
+        backgroundImage={backgroundImage}
+        title={title}
+        description={description}
+        year={year}
+      >
+        {children}
+      </ProjectCard>
+    ),
+    Covers: ({ id }: CoversProps) => <Covers id={id} />,
+    VideoCard: ({
+      id,
+      title,
+      description,
+      playbackId,
+      className,
+    }: VideoCardProps) => (
+      <VideoCard
+        id={id}
+        title={title}
+        description={description}
+        playbackId={playbackId}
+        className={className}
+      />
+    ),
+    IphoneMockupVideo: ({ playbackId, className }: IphoneMockupVideoProps) => (
+      <IphoneMockupVideo playbackId={playbackId} className={className} />
+    ),
+    IphoneMockupImage: ({
+      src,
+      alt,
+      width,
+      height,
+      className,
+      backgroundImage,
+    }: IphoneMockupImageProps) => (
+      <IphoneMockupImage
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        backgroundImage={backgroundImage}
+      />
+    ),
+    ResponsiveGrid: ({ children, columns, className }: ResponsiveGridProps) => (
+      <ResponsiveGrid columns={columns} className={className}>
+        {children}
+      </ResponsiveGrid>
     ),
   };
 }
