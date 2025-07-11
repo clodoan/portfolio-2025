@@ -24,7 +24,7 @@ const Covers = ({ id }: CoversProps) => {
         )}
       >
         <Image
-          src="/projects/id-doc/status-sheet.png"
+          src="/projects/footprint/id-doc/scan-review.png"
           alt={id}
           width={600}
           height={600}
