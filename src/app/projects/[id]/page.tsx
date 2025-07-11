@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "../../../../mdx-components";
+import Link from "next/link";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -40,9 +41,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
     return (
       <div className="w-screen min-h-[100dvh]">
-        <div className="flex flex-col gap-6 md:max-w-[var(--desktop-container-max-width)] max-w-[var(--mobile-container-max-width)] mx-auto p-5 py-20">
-          <div className="space-y-4">
-            <h1 className="text-label-1">{frontmatter.title}</h1>
+        <div className="flex flex-col gap-6 mx-auto p-5 py-20">
+          <div className="space-y-4 mx-auto px-5 md:px-0 w-full max-w-container-mobile md:max-w-container-desktop">
+            <h1 className="text-label-1 flex items-center gap-2">
+              <Link
+                href="/"
+                className="text-label-1 text-tertiary hover:text-primary"
+              >
+                Home
+              </Link>
+              <span className="text-tertiary opacity-50"> / </span>
+              {frontmatter.title}
+            </h1>
             <p className="text-body-1 text-secondary">
               {frontmatter.description}
             </p>

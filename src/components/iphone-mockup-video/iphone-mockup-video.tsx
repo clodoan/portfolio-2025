@@ -2,12 +2,14 @@
 
 import MuxPlayer from "@mux/mux-player-react";
 import { useState } from "react";
+import { cx } from "class-variance-authority";
 
 export type IphoneMockupVideoProps = {
   playbackId: string;
+  className?: string;
 };
 
-function IphoneMockupVideo({ playbackId }: IphoneMockupVideoProps) {
+function IphoneMockupVideo({ playbackId, className }: IphoneMockupVideoProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoadStart = () => {
@@ -19,7 +21,12 @@ function IphoneMockupVideo({ playbackId }: IphoneMockupVideoProps) {
   };
 
   return (
-    <div className="flex justify-center py-5 rounded-2xl overflow-hidden bg-[url('/projects/backgrounds/nature-1.jpg')] bg-cover bg-center bg-no-repeat my-10 mx-auto relative">
+    <div
+      className={cx(
+        "flex justify-center w-full py-5 rounded-2xl overflow-hidden bg-[url('/projects/backgrounds/nature-1.jpg')] bg-cover bg-center bg-no-repeat mx-auto relative",
+        className
+      )}
+    >
       {isLoading && (
         <div className="absolute inset-0 z-10 bg-background-secondary">
           <div className="w-full h-full relative overflow-hidden">

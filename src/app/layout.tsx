@@ -20,7 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body
-        className={`${sansSerif.variable} ${robotoSerif.variable} antialiased min-h-screen isolate bg-background text-primary`}
+        className={`${sansSerif.variable} ${robotoSerif.variable} antialiased isolate bg-background`}
       >
         <NuqsAdapter>
           <ThemeWrapper>{children}</ThemeWrapper>

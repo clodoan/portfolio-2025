@@ -4,12 +4,13 @@ import { XMarkIcon } from "@heroicons/react/16/solid";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
 
 export type ExpandableImageProps = {
-  children: React.ReactNode;
+  image: string;
 };
 
-const ExpandableImage = ({ children }: ExpandableImageProps) => {
+const ExpandableImage = ({ image }: ExpandableImageProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const ExpandableImage = ({ children }: ExpandableImageProps) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {children}
+          <Image src={image} alt="Expandable Image" width={600} height={600} />
         </motion.button>
       </Dialog.Trigger>
 
@@ -77,7 +78,12 @@ const ExpandableImage = ({ children }: ExpandableImageProps) => {
                 <Dialog.Title className="sr-only">Image Preview</Dialog.Title>
 
                 <div className="relative max-w-[90vw] max-h-[90vh] overflow-auto rounded">
-                  {children}
+                  <Image
+                    src={image}
+                    alt="Expandable Image"
+                    width={1200}
+                    height={1200}
+                  />
                 </div>
               </Dialog.Content>
             </motion.div>
