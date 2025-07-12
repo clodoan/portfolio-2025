@@ -51,8 +51,8 @@ export const resumeData: ResumeData = {
     contacts: [
       {
         type: "location",
-        label: "East Coast, United States",
-        value: "East Coast, United States",
+        label: "Washington, DC",
+        value: "Washington, DC",
       },
       {
         type: "email",
@@ -88,7 +88,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Designer",
+      title: "Product Designer",
       company: "MainStreet",
       location: "Remote",
       startDate: "Jun 2021",
@@ -152,7 +152,7 @@ export const resumeData: ResumeData = {
       startDate: "Sep 2016",
       endDate: "Sep 2017",
       bullets: [
-        "Led the Argentinian launch of Masisa's acceleration program, fostering innovation in architecture and construction.",
+        "Spearheaded the Argentinian launch of Masisa's acceleration program, attracting 50 startup applications through strategic networking with entrepreneurs.",
         "Sourced and selected top-performing startups, significantly increasing the program's industry influence.",
         "Mentored incubated companies, guiding product development and refining go-to-market strategies.",
       ],
@@ -177,7 +177,7 @@ export const resumeData: ResumeData = {
       startDate: "Nov 2012",
       endDate: "Nov 2014",
       description:
-        "WoodpeckeR was an industrial design studio that created wooden products for smartphones, tablets, and other devices.",
+        "WoodpeckeR was an industrial design studio that created products for smartphones, tablets, and other devices.",
       bullets: [
         "Awarded the 'Innovative Design' Prize in the 'International Design Fair 2013' in Metropolitan Design Center of Buenos Aires (CMD).",
         "Permanent stock in Museum of Latin American Modern Art (MALBA) official store (2013)",
@@ -192,7 +192,7 @@ export const resumeData: ResumeData = {
       description:
         "ComeCasero was an online marketplace for homemade food to discover and order the best meals from neighboring cooks.",
       bullets: [
-        "Co-founded the company with a friend and we raised a seed round from 500 Startups Latin America.",
+        "Responsible for leading all fundraising activities, successfully securing seed investment from 500 Startups Latin America.",
         "Designed the company's first version of the product and led launch strategy and operations in Mexico City.",
       ],
     },

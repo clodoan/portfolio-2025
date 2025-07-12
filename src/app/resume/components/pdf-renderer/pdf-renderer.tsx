@@ -1,9 +1,14 @@
 import { Document, Page, View, StyleSheet, Text } from "@react-pdf/renderer";
 import { resumeData } from "../../resume-data";
 
+const FONT_SIZE = 6;
+const SPACING_MEDIUM = 4;
+const SPACING_SMALL = 2;
+const SPACING_XSMALL = 1;
+
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
+    padding: 32,
     fontFamily: "Helvetica",
     backgroundColor: "#ffffff",
   },
@@ -11,8 +16,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 32,
+    alignItems: "flex-start",
+    marginBottom: SPACING_MEDIUM,
   },
   contactInfoContainer: {
     display: "flex",
@@ -20,61 +25,66 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   contactInfo: {
-    fontSize: 8,
-    marginBottom: 4,
+    fontSize: FONT_SIZE,
     lineHeight: 1.5,
     color: "#374151",
     textAlign: "right",
     opacity: 0.8,
   },
   title: {
-    fontSize: 10,
-    marginBottom: 4,
+    fontSize: FONT_SIZE,
     fontWeight: "semibold",
     lineHeight: 1.5,
     color: "#1a1a1a",
   },
   subtitle: {
-    fontSize: 10,
-    marginBottom: 4,
+    fontSize: FONT_SIZE,
     color: "#6b7280",
     lineHeight: 1.5,
   },
-
   section: {
-    marginBottom: 16,
+    marginBottom: SPACING_MEDIUM,
   },
   sectionTitle: {
-    fontSize: 10,
+    fontSize: FONT_SIZE,
     fontWeight: "semibold",
-    marginBottom: 12,
-    borderBottom: "1px solid #e5e7eb",
-    paddingBottom: 4,
-    lineHeight: 1.5,
+    marginBottom: SPACING_MEDIUM,
+    borderBottom: "1px solid #ECECEC",
+    paddingBottom: SPACING_XSMALL,
+    lineHeight: 1.6,
     color: "#1a1a1a",
   },
+  jobContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  jobTitleContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: SPACING_MEDIUM,
+  },
   jobTitle: {
-    fontSize: 10,
+    fontSize: FONT_SIZE,
     fontWeight: "semibold",
-    marginBottom: 2,
     lineHeight: 1.5,
     color: "#1a1a1a",
   },
   company: {
-    fontSize: 10,
+    fontSize: FONT_SIZE,
     color: "#6b7280",
-    marginBottom: 2,
     lineHeight: 1.5,
   },
   date: {
-    fontSize: 9,
+    fontSize: FONT_SIZE,
     color: "#9ca3af",
-    marginBottom: 4,
     lineHeight: 1.5,
   },
   description: {
-    fontSize: 10,
-    marginBottom: 4,
+    fontSize: FONT_SIZE,
+    marginBottom: SPACING_SMALL,
     lineHeight: 1.6,
     color: "#374151",
   },
@@ -86,34 +96,29 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   bulletPointText: {
-    fontSize: 10,
-    marginBottom: 2,
+    fontSize: FONT_SIZE,
     lineHeight: 1.6,
     color: "#374151",
   },
   bulletPoint: {
-    fontSize: 10,
-    marginBottom: 2,
-    marginLeft: 16,
+    fontSize: FONT_SIZE,
+    marginLeft: SPACING_MEDIUM,
     lineHeight: 1.6,
     color: "#374151",
   },
   education: {
-    fontSize: 10,
+    fontSize: FONT_SIZE,
     fontWeight: "semibold",
-    marginBottom: 2,
     lineHeight: 1.5,
     color: "#1a1a1a",
   },
   school: {
-    fontSize: 10,
+    fontSize: FONT_SIZE,
     color: "#6b7280",
-    marginBottom: 2,
     lineHeight: 1.5,
   },
   skills: {
-    fontSize: 8,
-    marginBottom: 4,
+    fontSize: FONT_SIZE,
     lineHeight: 1.6,
     color: "#374151",
   },
@@ -133,10 +138,6 @@ const PDFRenderer = () => {
 
           <View style={styles.contactInfoContainer}>
             {resumeData.personal.contacts.map((contact, index) => {
-              if (contact.type === "location" || contact.type === "website") {
-                return null;
-              }
-
               return (
                 <Text
                   key={`${contact.type}-${index}`}
@@ -153,22 +154,26 @@ const PDFRenderer = () => {
           <Text style={styles.sectionTitle}>About</Text>
           <Text style={styles.description}>{resumeData.personal.about}</Text>
         </View>
-
         {/* Experience */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Experience</Text>
-
           {resumeData.experience.map((exp, index) => (
             <View
               key={`${exp.title}-${exp.company}-${index}`}
               style={styles.section}
-              break={exp.title === "Head of Product Design"}
+              // break={exp.title === "Head of Product Design"}
             >
-              <Text style={styles.jobTitle}>{exp.title}</Text>
-              <Text style={styles.company}>{exp.company}</Text>
-              <Text style={styles.date}>
-                {exp.startDate} - {exp.endDate || "Present"}
-              </Text>
+              <View style={styles.jobContainer}>
+                <View style={styles.jobTitleContainer}>
+                  <Text style={styles.jobTitle}>{exp.title}</Text>
+                  <Text style={styles.company}>|</Text>
+                  <Text style={styles.company}>{exp.company}</Text>
+                </View>
+                <Text style={styles.date}>
+                  {exp.startDate} - {exp.endDate || "Present"}
+                </Text>
+              </View>
+
               {exp.description && (
                 <Text style={styles.description}>{exp.description}</Text>
               )}
