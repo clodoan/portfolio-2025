@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --desktop-container-max-width: 600px;
+  --desktop-container-max-width: 560px;
   --desktop-container-max-width-wide: 1200px;
   --mobile-container-max-width: 90%;
 
