@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return (
       <div className="w-screen min-h-[100dvh]">
         <div className="flex flex-col gap-6 mx-auto p-5 py-20">
-          <div className="space-y-4 mx-auto px-5 md:px-0 w-full max-w-container-mobile md:max-w-container-desktop">
+          <div className="space-y-4 mx-auto md:px-0 w-full max-w-container-mobile md:max-w-container-desktop">
             <h1 className="text-label-1 flex items-center gap-2">
               <Link
                 href="/"
@@ -67,7 +67,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </a>
             )}
           </div>
-          <div className="prose prose-invert max-w-none">
+          <div className="prose prose-invert max-w-container-mobile md:max-w-container-desktop mx-auto">
             <MDXRemote source={content} components={components} />
           </div>
         </div>
