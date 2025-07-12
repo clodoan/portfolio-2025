@@ -53,10 +53,8 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     ProjectMeta: ({ children }: { children: React.ReactNode }) => (
       <div className="flex flex-wrap gap-1 mt-2">{children}</div>
     ),
-    Paragraph: ({ children, className, customMaxWidth }: ParagraphProps) => (
-      <Paragraph className={className} customMaxWidth={customMaxWidth}>
-        {children}
-      </Paragraph>
+    Paragraph: ({ children, className }: ParagraphProps) => (
+      <Paragraph className={className}>{children}</Paragraph>
     ),
     Image: ({ src, alt, width, height, className }: ImageProps) => (
       <Image
